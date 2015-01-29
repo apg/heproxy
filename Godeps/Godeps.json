@@ -1,0 +1,10 @@
+{
+	"ImportPath": "github.com/apg/heproxy",
+	"GoVersion": "go1.3.3",
+	"Deps": [
+		{
+			"ImportPath": "github.com/glenn-brown/golang-pkg-pcre/src/pkg/pcre",
+			"Rev": "48bb82a8b8ceea98f4e97825b43870f6ba1970d6"
+		}
+	]
+}
