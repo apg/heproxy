@@ -6,14 +6,13 @@ import (
 	"net/http/httputil"
 )
 
-func httpsDirector(req *http.Request, rules *RuleSet) {
-	log.Printf("%s", req.URL)
-}
-
 // NewHEProxy returns a new proxy which maps a request to an HTTPS url if available
-func NewHEProxy(rs *RuleSet) *httputil.ReverseProxy {
+func NewHEProxy(rw *Rewriter) *httputil.ReverseProxy {
 	director := func(req *http.Request) {
-		httpsDirector(req, rs)
+		oldURL := req.URL
+		newURL := rw.Rewrite(oldURL)
+		req.URL = newURL
+		log.Printf("action=rewrite from=%q to=%q", oldURL, newURL)
 	}
 
 	return &httputil.ReverseProxy{Director: director}
