@@ -1,0 +1,59 @@
+<!--
+	Nonfunctional subdomains:
+
+		- (www.)?admissions ¹
+		- (www.)?academy ²
+		- advising ²
+		- (www.)?apb ³
+		- (www.)?cit-helpdesk ¹
+		- (www.)?computersecurity ¹
+		- (www.)?curca ²
+		- (www.)?discoveryseminars ²
+		- (www.)?financialaid ¹
+		- (www.)?health ¹
+		- helpdesk ¹
+		- (www.)?giving ³
+		- www.grad ¹
+		- (www.)?itpolicies ¹
+		- (www.)?law
+		- (www.)?orientation ²
+		- (www.)?ub-careers ¹
+		- undergrad-catalog ¹
+		- universityscholars ²
+
+	¹ Plaintext reply
+	² Shows prv-web.eng.buffalo.edu
+	³ Shows www.buffalo.edu
+
+-->
+<ruleset name="University at Buffalo (partial)">
+
+	<target host="buffalo.edu" />
+	<target host="*.buffalo.edu" />
+		<!--
+			At least some pages redirect to http:
+								-->
+		<exclusion pattern="^http://(?:www\.)?student-affairs\.buffalo\.edu/(?!(?:\w+/)?(?:images|style)/)" />
+
+
+	<securecookie host=".+\.buffalo\.edu$" name=".+" />
+
+
+	<rule from="^http://((?:prv-web\.eng|inted\.oie|security|shibboleth|ublearns|ubmail|www)\.)?buffalo\.edu/"
+		to="https://$1buffalo.edu/" />
+
+	<!--	Domains for which both !www and www
+		exist, and both work without caveat:
+							-->
+	<rule from="^http://(www\.)?(alumni|hr|myub|provost|student-affairs|ubit|wings)\.buffalo\.edu/"
+		to="https://$1$2buffalo.edu/" />
+
+	<rule from="^http://(?:www\.)?ubfoundation\.buffalo\.edu/"
+		to="https://ubfoundation.buffalo.edu/" />
+
+	<!--	Cert only matches www.ubjobs.
+						-->
+	<rule from="^http://(?:www\.)?ubjobs\.buffalo\.edu/"
+		to="https://www.ubjobs.buffalo.edu/" />
+
+</ruleset>

@@ -1,0 +1,6 @@
+<ruleset name="Spyderco" platform="mixedcontent">
+  <target host="spyderco.com" />
+  <target host="www.spyderco.com" />
+
+  <rule from="^http://(www\.)?spyderco\.com/" to="https://$1spyderco.com/"/>
+</ruleset>

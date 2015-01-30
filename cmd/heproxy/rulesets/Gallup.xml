@@ -1,0 +1,18 @@
+<ruleset name="Gallup (partial)">
+
+	<target host="gallup.com" />
+	<target host="*.gallup.com" />
+		<!--
+			Redirect to http:
+						-->
+		<!--exclusion pattern="^http://www\.gallup\.com/(favicon\.ico|poll/\d+/[\w-]+\.aspx)" /-->
+		<!--
+			Exceptions:
+					-->
+		<exclusion pattern="^http://www\.gallup\.com/+(?!Assets/)" />
+
+
+	<rule from="^http://(content\.|www\.)?gallup\.com/"
+		to="https://$1gallup.com/" />
+
+</ruleset>

@@ -1,0 +1,28 @@
+<!--
+	Nonfunctional subdomains:
+
+		- jk *
+		- librtas *
+		- powerpc-utils *
+		- yaboot *
+
+	* Shows www
+
+
+	Fully covered subdomains:
+
+		- git
+		- patchwork
+
+-->
+<ruleset name="OzLabs (CAcert)" platform="cacert">
+
+	<target host="ozlabs.org" />
+	<target host="*.ozlabs.org" />
+		<exclusion pattern="^http://(?:jk|librtas|powerpc-utils|yaboot)\." />
+
+
+	<rule from="^http://([\w\.-]+\.)?ozlabs\.org/"
+		to="https://$1ozlabs.org/" />
+
+</ruleset>

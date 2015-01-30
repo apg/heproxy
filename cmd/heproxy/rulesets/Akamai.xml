@@ -1,0 +1,72 @@
+<!--
+	For problematic rules, see Akamai-mismatches.xml.
+
+
+	Other Akamai rulesets:
+
+		- Akamai.com.xml
+		- Edgeboss.net.xml
+
+
+	Nonfunctional domains:
+
+		- http14432.storage.akadns.net		(CN: contentstorage.akamai.com)
+		- cp44823.edgefcs.net			(reset)
+
+
+	Problematic domains:
+
+		- *.akamaihd.net *
+
+	* Insecure renegotiation
+
+-->
+<ruleset name="Akamai">
+
+	<target host="*.abmr.net" />
+	<target host="*.e.akamai.net" />
+	<target host="*.akamaihd.net" />
+		<!--
+			Causes many streams to 403 and region restriction to trip inappropriately.
+
+			https://mail1.eff.org/pipermail/https-everywhere-rules/2012-October/001324.html
+			https://trac.torproject.org/projects/tor/ticket/6557
+			https://trac.torproject.org/projects/tor/ticket/6871
+			https://trac.torproject.org/projects/tor/ticket/7080
+		 	https://trac.torproject.org/projects/tor/ticket/7198
+			https://trac.torproject.org/projects/tor/ticket/7577
+										-->
+		<exclusion pattern="^http://[\w-]+-(?:f|i|s|lh|vh)\.akamaihd\.net/" />
+                <!--
+			Apparently causes some Zynga games to fail to load.
+
+			https://trac.torproject.org/projects/tor/ticket/7090
+										-->
+		<exclusion pattern="^http://zynga\d-a.akamaihd\.net/" />
+
+                <!--
+			Breaks Titanfall, Github issue #390
+										-->
+		<exclusion pattern="^http://eaassets-a\.akamaihd\.net/" />
+		
+
+
+	<!--securecooie host="^\.abmr\.net$" name="^01AI$" /-->
+	<securecookie host=".*\.abmr\.net$" name=".+" />
+
+
+	<rule from="^http://ak1s\.abmr\.net/"
+		to="https://ak1s.abmr.net/" />
+
+	<rule from="^http://a248\.e\.akamai\.net/"
+		to="https://a248.e.akamai.net/" />
+
+	<rule from="^http://([^@:/\.]+)\.akamaihd\.net/"
+		to="https://$1.akamaihd.net/" />
+
+	<!--	This secures some web bugs:
+						-->
+	<rule from="^http://ak1\.abmr\.net/is/(www.imiclk|pixel\.mathtag)\.com(?=$|\?)"
+		to="https://ak1s.abmr.net/is/$1.com" />
+
+</ruleset>

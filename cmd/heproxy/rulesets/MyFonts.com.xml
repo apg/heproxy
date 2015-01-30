@@ -1,0 +1,40 @@
+<!--
+	CDN buckets:
+
+		- d2c1cl1a12l6zn.cloudfront.net
+
+			- cdn.myfonts.com
+			- cdn.myfonts.net
+
+
+	Nonfunctional domains:
+
+		- meta.myfonts.com *
+
+	* Dropped
+
+-->
+<ruleset name="MyFonts.com (partial)">
+
+	<target host="myfonts.com" />
+	<target host="*.myfonts.com" />
+	<target host="*.myfonts.net" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^www\.myfonts\.com$" name="^apisession$" /-->
+
+	<securecookie host="^www\.myfonts\.com$" name=".+" />
+
+
+	<rule from="^http://(origin\.|www\.)?myfonts\.com/"
+		to="https://$1myfonts.com/" />
+
+	<rule from="^http://cdn\.myfonts\.(?:com|net)/"
+		to="https://cdn.myfonts.net/" />
+
+	<rule from="^http://(easy|foundry|hello|origin|your)\.myfonts\.net/"
+		to="https://$1.myfonts.net/" />
+
+</ruleset>

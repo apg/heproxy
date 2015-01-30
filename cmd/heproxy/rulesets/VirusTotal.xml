@@ -1,0 +1,22 @@
+<!--
+	Nonfunctional subdomains:
+
+		- blog	(blogspot)
+
+
+	^: interrupted
+
+-->
+<ruleset name="VirusTotal">
+
+	<target host="virustotal.com" />
+	<target host="www.virustotal.com" />
+
+
+	<securecookie host="^www\.virustotal\.com$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?virustotal\.com/"
+		to="https://www.virustotal.com/" />
+
+</ruleset>

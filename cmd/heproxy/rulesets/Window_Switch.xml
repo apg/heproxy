@@ -1,0 +1,16 @@
+<ruleset name="Window Switch">
+
+	<target host="winswitch.org" />
+	<target host="www.winswitch.org" />
+
+
+	<securecookie host="^winswitch\.org$" name=".+" />
+
+
+	<!--	www redirects to ^ over http,
+		so copy that behavior:
+					-->
+	<rule from="^http://(?:www\.)?winswitch\.org/"
+		to="https://winswitch.org/" />
+
+</ruleset>

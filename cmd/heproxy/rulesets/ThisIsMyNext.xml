@@ -1,0 +1,8 @@
+<ruleset name="This is my next (buggy)" default_off="ssl_error_rx_record_too_long">
+  <target host="thisismynext.com" />
+  <target host="www.thisismynext.com" />
+
+  <securecookie host="^(?:.+\.)?thisismynext\.com$" name=".*"/>
+
+  <rule from="^http://(?:www\.)?thisismynext\.com/" to="https://thisismynext.com/"/>
+</ruleset>

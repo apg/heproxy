@@ -1,0 +1,33 @@
+<!--
+	Other Quantcast rulesets:
+
+		- Quantserve.com.xml
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- aboutads
+		- ak
+		- widget
+
+
+	Observed cookie subdomains:
+
+		- ak
+		- www
+
+-->
+<ruleset name="Quantcast">
+
+	<target host="quantcast.com" />
+	<target host="*.quantcast.com" />
+
+
+	<securecookie host=".*\.quantcast\.com$" name=".*" />
+
+
+	<rule from="^http://((?:aboutads|ak|widget|www)\.)?quantcast\.com/"
+		to="https://$1quantcast.com/" />
+
+</ruleset>

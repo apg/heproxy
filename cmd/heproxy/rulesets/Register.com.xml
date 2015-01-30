@@ -1,0 +1,16 @@
+<ruleset name="Register.com">
+
+	<target host="register.com" />
+	<target host="*.register.com" />
+
+
+	<securecookie host="^(?:.*\.)?register\.com$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?register\.com/"
+		to="https://www.register.com/" />
+
+	<rule from="^http://((?:www\.)?help|partners(?:hips|ignup)|support|webmail0[12])\.register\.com/"
+		 to="https://$1.register.com/" />
+
+</ruleset>

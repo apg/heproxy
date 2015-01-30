@@ -1,0 +1,45 @@
+<!--
+	For problematic rules, see FSFE.org-mismatches.xml.
+
+
+	Other FSFE rulesets:
+
+		- Document_Freedom_Day.xml
+
+
+	Nonfunctional domains:
+
+		- download.fsfe.org *
+
+	* Redirects to ^fsfe.org
+
+
+	Problematic domains:
+
+		- (www.)freeyourandroid.org		(prints status page)
+		- piwik.fsfe.org			(self-signed, mismatched, CN: curie.fsfeurope.org)
+
+-->
+<ruleset name="FSFE.org (partial)">
+
+	<target host="freeyourandroid.org" />
+	<target host="www.freeyourandroid.org" />
+	<target host="fsfe.org" />
+	<target host="*.fsfe.org" />
+	<target host="fsfeurope.org" />
+	<target host="*.fsfeurope.org" />
+
+
+	<securecookie host="^(?:fellowship|vote)\.fsfe\.org$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?freeyourandroid\.org/(?:.*)"
+		to="https://fsfe.org/campaigns/android/android.html" />
+
+	<rule from="^http://((?:blogs|crm|fellowship|l|registration|vote|wiki|www)\.)?fsfe\.org/"
+		to="https://$1fsfe.org/" />
+
+	<rule from="^http://(blogs\.|fellowship\.|www\.)?fsfeurope\.org/"
+		to="https://$1fsfeurope.org/" />
+
+</ruleset>

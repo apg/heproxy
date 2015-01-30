@@ -1,0 +1,23 @@
+<ruleset name="VK (experimental new rule)">
+
+	<target host="vk.com" />
+	<target host="*.vk.com" />
+	<target host="vk.me" />
+	<target host="*.vk.me" />
+	<target host="vkontakte.ru" />
+	<target host="www.vkontakte.ru" />
+
+        <exclusion pattern="^http://cs(?:\w*\.)vk.me/" />
+
+	<securecookie host="^.*\.vk\.com$" name=".*" />
+
+	<rule from="^http://([\w+\-\.]+\.)?vk\.me/"
+		to="https://$1vk.me/" />
+
+	<rule from="^http://((?:login|m|www)\.)?vk\.com/"
+		to="https://$1vk.com/" />
+
+	<rule from="^http://([\w+\-\.]+\.)?vkontakte\.ru/"
+		to="https://$1vk.com/" />
+
+</ruleset>

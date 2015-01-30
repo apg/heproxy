@@ -1,0 +1,35 @@
+<!--
+	CDN buckets:
+
+		- cs95.wac.edgecastcdn.net/...
+			- assets.whicdn.com
+			- data.whicdn.com
+			- stats.whicdn.com
+
+		- assets & data show AWS 403 message
+
+
+	Mixed content:
+
+		- Images from data2 *
+
+	* Secured by us
+
+-->
+<ruleset name="We Heart It">
+
+	<target host="weheartit.com" />
+	<target host="*.weheartit.com" />
+	<target host="*.whicdn.com" />
+
+
+	<securecookie host="^\.?weheartit\.com$" name=".+" />
+
+
+	<rule from="^http://(m\.|www\.)?weheartit\.com/"
+		to="https://$1weheartit.com/" />
+
+	<rule from="^http://(assets|data2?)\.whicdn\.com/"
+		to="https://$1.whicdn.com/" />
+
+</ruleset>

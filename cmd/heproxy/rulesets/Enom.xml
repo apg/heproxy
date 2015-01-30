@@ -1,0 +1,19 @@
+<!--
+	For other Demand Media coverage, see Demand-Media.xml.
+
+
+	Many pages redirect to http, though there may
+	be more than are handled here that don't.
+
+-->
+<ruleset name="eNom (partial)">
+
+	<target host="enom.com" />
+	<target host="www.enom.com" />
+		<exclusion pattern="^http://(?:www\.)?enom\.com/(?!login|signup/).*\.aspx(?:$|\?)" />
+
+
+	<rule from="^http://(www\.)?enom\.com/"
+		to="https://$1enom.com/" />
+
+</ruleset>

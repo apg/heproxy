@@ -1,0 +1,51 @@
+<!--
+	CDN buckets:
+
+		- s3.amazonaws.com/zd-assets/ | d16cvnquvjw7pr.cloudfront.net
+
+
+	Clients with custom domains redirect back to said domains when rewritten
+	to their respective zendesk.com subdomains. All resources on client
+	pages are fetched from assets.zendesk.com, save for:
+
+		- favicon.ico
+		- generated/
+		- system/.+/favicon.ico
+		- widgets/
+
+
+	Fully covered domains:
+
+		- p\d.zdassets.com:
+
+			- [12]
+
+-->
+<ruleset name="Zendesk (partial)" platform="mixedcontent">
+
+	<target host="*.zdassets.com" />
+	<target host="zendesk.com" />
+	<target host="*.zendesk.com" />
+		<!--
+			https://trac.torproject.org/projects/tor/ticket/8198
+								-->
+		<exclusion pattern="^http://(?:video|developer)\." />
+		<!--
+			Redirects to http:
+						-->
+		<exclusion pattern="^http://[\w-]+\.zendesk\.com/forums(?:$|\?)" />
+
+
+	<!--securecookie host="^(.*\.)?zendesk\.com$" name=".+" /-->
+
+
+	<rule from="^http://p(\d)\.zdassets\.com/"
+		to="https://p$1.zdassets.com/" />
+
+	<rule from="^http://cdn\.zendesk\.com/"
+		to="https://d16cvnquvjw7pr.cloudfront.net/" />
+
+	<rule from="^http://([\w-]+\.)?zendesk\.com/"
+		to="https://$1zendesk.com/" />
+
+</ruleset>

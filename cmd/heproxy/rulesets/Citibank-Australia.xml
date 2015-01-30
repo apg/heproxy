@@ -1,0 +1,13 @@
+<!--
+	For other Citigroup coverage, see Citigroup.com.xml.
+
+-->
+<ruleset name="Citibank Australia (insecure)" default_off="JS redirect loop">
+
+	<target host="citibank.com.au" />
+	<target host="www.citibank.com.au" />
+
+	<rule from="^http://(www\.)?citibank\.com\.au/"
+		to="https://$1citibank.com.au/" />
+
+</ruleset>

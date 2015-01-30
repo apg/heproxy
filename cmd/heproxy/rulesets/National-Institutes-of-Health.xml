@@ -1,0 +1,73 @@
+<!--
+	National Institutes of Health
+
+	For other US government coverage, see US-government.xml.
+
+
+	Nonfunctional domains:
+
+		- nih.gov subdomains:
+
+			- ^ *
+			- cancergenome		(shows login; mismatched, self-signed, CN: emergencytoolprod.cancer.gov)
+			- jobs			(shows ugsp; mismatched, CN: ugsp.nih.gov)
+			- www.jobs **
+			- ncats *
+			- www.ncats
+			- patientinfo.ninds ***
+			- blast.ncbi.nlm	(shows ncbi, cert valid)
+			- od *
+			- acd.od		(404; expired, CN secure.palladianpartners.com)
+			- nihpublications.od **
+			- www.nimh ***
+			- www.od *
+			- www *
+
+	* Times out
+	** Reset
+	*** Interrupted
+
+
+	Problematic domains:
+
+		- nlm.nih.gov		(cert only matches www.nlm)
+		- training.nih.gov	(shows ugsp; mismatched, CN: ugsp.nih.gov)
+		- (www.)pubmed.gov	(mismatched, CN: *.ncbi.nlm.nih.gov)
+
+
+	Fully covered domains:
+
+		- nih.gov subdomains:
+
+			- grants
+			- www.niaid
+			- (www.)nlm		(^ → www)
+			- (www.)ncbi.nlm
+			- pubchem.ncbi.nlm
+			- www.nidcd.nlm
+			- publicaccess
+			- (www.)training	(^ → www)
+
+		- (www.)pubmed.gov	(→ www.ncbi.nlm.nih.gov)
+
+-->
+<ruleset name="NIH.gov (partial)" platform="mixedcontent">
+
+	<target host="*.nih.gov" />
+	<target host="pubmed.gov" />
+	<target host="*.pubmed.gov" />
+
+
+	<securecookie host="^.*\.nih\.gov$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?(nlm|training)\.nih\.gov/"
+		to="https://www.$1.nih.gov/" />
+
+	<rule from="^http://(grants|(?:pubchem\.|www\.)?ncbi\.nlm|www\.niaid|www\.nidcd\.nlm|publicaccess)\.nih\.gov/"
+		to="https://$1.nih.gov/" />
+
+	<rule from="^http://(?:www\.)?pubmed\.gov/"
+		to="https://www.ncbi.nlm.nih.gov/pubmed/" />
+
+</ruleset>

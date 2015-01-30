@@ -1,0 +1,61 @@
+<!--
+	Other Springer rulesets:
+
+		- Biomed-Central.xml
+
+
+	Nonfunctional domains:
+
+		- (www.)chemistrycentral.com	(times out)
+		- link.springer.com *
+		- rd.springer.com *
+		- (www.)springeropen.com *
+
+	* 504, akamai
+
+
+	Problematic domains:
+
+		- springer.com			(mismatched, CN: www.springer.com)
+		- springerlink.com
+		- www.springerlink.com		(akamai)
+		- (www.)springeronline.com	(works; mismatched, CN: www.springer.com)
+
+
+	Fully covered domains:
+
+		- (www.)springer.com
+		- admin.springer.com
+		- checkout.springer.com
+		- images.springer.com
+		- preview.springer.com
+		- static.springer.com
+
+-->
+<ruleset name="Springer (partial)">
+
+	<target host="springer.com" />
+	<target host="*.springer.com" />
+	<target host="springer-gabler.de" />
+	<target host="www.springer-gabler.de" />
+	<target host="springerzahnmedizin.de"/>
+	<target host="www.springerzahnmedizin.de"/>
+
+
+	<securecookie host="^springer-gabler\.de$" name=".+" />
+	<securecookie host="^.+\.springer\.com$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?springer\.com/"
+		to="https://www.springer.com/"/>
+
+	<rule from="^http://(admin|checkout|images|preview|static)\.springer\.com/"
+		to="https://$1.springer.com/" />
+
+	<rule from="^http://(?:www\.)?springer-gabler\.de/"
+		to="https://springer-gabler.de/"/>
+
+	<rule from="^http://(?:www\.)?springerzahnmedizin\.de/(css|img|servlet)/"
+		to="https://springerzahnmedizin.de/$1/"/>
+
+</ruleset>

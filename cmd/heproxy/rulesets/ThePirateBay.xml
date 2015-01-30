@@ -1,0 +1,43 @@
+<!--
+	For problematic rules, see ThePirateBay-mismatches.xml.
+
+
+	Nonfunctional domains:
+
+		- thepiratebay.org
+		- *.thepiratebay.org
+		- thepiratebay.se
+		- *.thepiratebay.se
+		- suprbay.org
+		- www.suprbay.org
+		- forum.suprbay.org
+		- image.bayimg.com
+		- (www.)?thepiratebay.sx *
+
+	* Plaintext reply
+
+
+	Problematic domains:
+
+		- (www.)?suprbay.org *
+
+	* Mismatched
+
+
+	Insecure cookies are set for these domains:
+
+		- .thepiratebay.cr
+
+-->
+<ruleset name="The Pirate Bay (partial)">
+
+	<target host="thepiratebay.cr" />
+	<target host="*.thepiratebay.cr" />
+
+	<securecookie host="^(?:.*\.)?thepiratebay\.cr$" name=".+" />
+	<securecookie host=".*\.suprbay\.org$" name=".+" />
+
+	<rule from="^http://(?:www\.)?thepiratebay\.cr/"
+		to="https://thepiratebay.cr/" />
+
+</ruleset>

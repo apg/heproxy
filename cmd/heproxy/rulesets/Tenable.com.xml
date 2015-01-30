@@ -1,0 +1,34 @@
+<!--
+	Tenable Network Security
+
+
+	Fully covered subdomains:
+
+		- (www.)?
+		- elearn
+		- store
+		- support
+
+
+	Insecure cookies are set for these domains:
+
+		- elearn.tenable.com
+
+-->
+<ruleset name="Tenable.com">
+
+	<target host="tenable.com" />
+	<target host="*.tenable.com" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^elearn\.tenable\.com$" name="^MoodleSession$" /-->
+
+	<securecookie host="^(?:elearn|store|\.support)\.tenable\.com$" name=".+" />
+
+
+	<rule from="^http://((?:elearn|store|support|www)\.)?tenable\.com/"
+		to="https://$1tenable.com/" />
+
+</ruleset>

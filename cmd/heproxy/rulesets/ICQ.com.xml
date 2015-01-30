@@ -1,0 +1,64 @@
+<!--
+	Problematic subdomains:
+
+		- games *
+
+	* (mismached, CN: WWW.ICQ.COM)
+
+
+	Partially covered subdomains:
+
+		- games *
+		- people
+
+	* → www
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- c
+		- chat
+		- download
+		- greetings
+		- wlogin
+		- xtraz
+
+
+	Mixed content:
+
+		- css on download and www from fonts.googleapis.com *
+		- css on people from $self *
+
+	* Secured by us
+
+-->
+<ruleset name="ICQ.com">
+
+	<target host="icq.com" />
+	<target host="*.icq.com" />
+		<exclusion pattern="^http://games\.icq\.com/(?!$|\?|games(?:$|\?|/))" />
+		<!--
+			Avoid false/broken MCB:
+						-->
+		<exclusion pattern="^http://people\.icq\.com/(?!$|\?|css/|favicon\.ico|img/)" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^\.icq\.com$" name="^(geo|icq_lang|icq_ln_personal)$" /-->
+	<!--securecookie host="^chat\.icq\.com$" name="^icq_lang$" /-->
+
+	<securecookie host="^(?:chat|www)?\.icq\.com$" name=".+" />
+
+
+	<rule from="^http://company\.icq\.com/(\?.*)?$"
+		to="https://www.icq.com/info/$1" />
+
+	<rule from="^http://games\.icq\.com/(?=$|\?.*)"
+		to="https://www.icq.com/games/" />
+
+	<rule from="^http://((?:c|chat|download|greetings|people|wlogin|www|xtraz)\.)?icq\.com/"
+		to="https://$1icq.com/" />
+
+</ruleset>

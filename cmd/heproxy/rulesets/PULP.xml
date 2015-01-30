@@ -1,0 +1,23 @@
+<!--
+	CDN buckets:
+
+		- pulp-covers.s3.amazonaws.com
+		- d29uljlw7gispl.cloudfront.net
+
+
+	(www.)?: refused
+
+-->
+<ruleset name="PULP" default_off="connection refused">
+
+	<target host="pulpcentral.com" />
+	<target host="*.pulpcentral.com" />
+
+
+	<securecookie host="^ssl\.pulpcentral\.com$" name=".+" />
+
+
+	<rule from="^http://(www\.)?pulpcentral\.com/"
+		to="https://$1pulpcentral.com/" />
+
+</ruleset>

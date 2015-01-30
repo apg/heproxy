@@ -1,0 +1,29 @@
+<!--
+	For other UBM coverage, see UBM-mismatches.xml.
+
+-->
+<ruleset name="CRN" platform="mixedcontent">
+
+	<target host="crn.com" />
+	<target host="*.crn.com" />
+	<!--
+		Should be in a vert... ruleset
+						-->
+	<target host="crn.verticalsearchworks.com" />
+
+
+	<!--	covers:
+
+			^i
+			^signin
+					-->
+	<securecookie host="^.*\.crn\.com$" name=".+" />
+
+
+	<rule from="^http://(i\.|signin\.|www\.)?crn\.com/"
+		to="https://$1crn.com/" />
+
+	<rule from="^http://crn\.verticalsearchworks\.com/"
+		to="https://ad-secure.firstlightera.com/" />
+
+</ruleset>

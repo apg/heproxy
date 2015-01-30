@@ -1,0 +1,20 @@
+<!--
+	Nonfunctional domains:
+
+		- (www.)justhookup.com	(refused)
+
+
+	Problematic domains:
+
+		- static.justhookup.com		(works; self-signed, CN: 184.154.76.5)
+
+-->
+<ruleset name="JDI Dating (partial)">
+
+	<target host="fbdatesecure.com"/>
+	<target host="www.fbdatesecure.com"/>
+
+	<rule from="^http://(www\.)?fbdatesecure\.com/"
+		to="https://$1fbdatesecure.com/"/>
+
+</ruleset>

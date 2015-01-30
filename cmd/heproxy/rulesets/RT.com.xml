@@ -1,0 +1,45 @@
+<!--
+	Russia Today
+
+
+	Nonfunctional subdomains:
+
+		- (www.) ¹
+		- arabic ²
+		- freevideo ³
+		- img ¹
+		- inotv
+		- learnrussian
+		- mariinsky	(times out)
+		- on
+		- partners
+		- rtd
+		- russiapedia
+		- victory1945
+
+	¹ Redirects to http, valid cert
+	² Refused
+	³ Dropped
+
+
+	Problematic subdomains:
+
+		- cdn *
+
+	* Works, edgecast
+
+-->
+<ruleset name="RT.com (partial)">
+
+	<target host="rt.com" />
+	<target host="*.rt.com" />
+		<!--exclusion pattern="^http://(arabic|cdn|freevideo|inotv|learnrussian|mariinsky|on|partners|rtd|russiapedia|victory1945|www)\.rt\.com/" /-->
+
+
+	<securecookie host="^.*\.rt\.com$" name=".*" />
+
+
+	<rule from="^http://(actualidad|assange|meetfriends)\.rt\.com/"
+		to="https://$1.rt.com/" />
+
+</ruleset>

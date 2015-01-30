@@ -1,0 +1,13 @@
+<ruleset name="oFono">
+
+	<target host="ofono.org" />
+	<target host="*.ofono.org" />
+
+
+	<securecookie host="^(?:w*\.)?ofono\.org$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?ofono\.org/"
+		to="https://ofono.org/" />
+
+</ruleset>

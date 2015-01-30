@@ -1,0 +1,52 @@
+<!--
+	CDN buckets:
+
+		- ttv-backgroundart.s3.amazonaws.com
+
+
+	Nonfunctional domains:
+
+		- www.justin.tv *
+		- www.twitch.tv *
+
+	* Times out
+
+
+	Problematic jtvnw.net subdomains:
+
+		- s *
+		- static	(mismatched, CN: *.justin.tv)
+		- blog.justin.tv	(wordpress)
+                - static-cdn.jtvnw.net
+
+	* Times out
+
+
+	Fully covered domains:
+
+		- jtvnw.net subdomains:
+
+			- s		(→ static.justin.tv)
+			- static	(→ static.justin.tv)
+
+		- justin.tv
+		- static.justin.tv
+		- (www.)twitch.tv
+
+-->
+<ruleset name="Justin.tv (partial)">
+
+	<target host="justin.tv" />
+	<target host="static.justin.tv" />
+	<target host="twitch.tv" />
+
+        
+	<rule from="^http://(static\.)?(justin|twitch)\.tv/"
+		to="https://$1$2.tv/" />
+
+	<rule from="^http://api\.twitch\.tv/" to="https://api.twitch.tv/"/>
+	
+	<rule from="^http://chatdepot\.twitch\.tv/" to="https://chatdepot.twitch.tv/"/>
+
+  <rule from="^http://secure\.twitch\.tv/" to="https://secure.twitch.tv/" />
+</ruleset>

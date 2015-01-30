@@ -1,0 +1,34 @@
+<!--
+	Other Comcast rulesets:
+
+		- Comcast.net.xml
+		- Fandango.xml
+
+
+	Nonfunctional domains:
+
+		- business.comcast.com
+		- corporate.comcast.com		(504, akamai)
+
+
+	Problematic domains:
+
+		- comcast.com	(cert only matches www)
+
+-->
+<ruleset name="Comcast (partial)">
+
+	<target host="comcast.com" />
+	<target host="*.comcast.com" />
+
+
+	<securecookie host="^(?:customer|www)\.comcast\.com$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?comcast\.com/"
+		to="https://www.comcast.com/" />
+
+	<rule from="^http://customer\.comcast\.com/"
+		to="https://customer.comcast.com/" />
+
+</ruleset>

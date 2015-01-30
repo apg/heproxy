@@ -1,0 +1,35 @@
+<!--
+	For problematic rules, see Qualcomm-mismatches.xml.
+
+
+	Other Qualcomm rulesets:
+
+		- AllJoyn.org.xml
+
+
+	Problematic subdomains:
+
+		- latam *
+
+	* Works, akamai
+
+
+	Fully covered subdomains:
+
+		- (www.)?
+		- (www.)?qca
+
+-->
+<ruleset name="Qualcomm.com (partial)">
+
+	<target host="qualcomm.com"/>
+	<target host="*.qualcomm.com"/>
+
+
+	<securecookie host=".*\.qca\.qualcomm\.com$" name=".+" />
+
+
+	<rule from="^http://(www\.)?(qca\.)?qualcomm\.com/"
+		to="https://$1$2qualcomm.com/" />
+
+</ruleset>

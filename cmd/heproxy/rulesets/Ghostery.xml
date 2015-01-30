@@ -1,0 +1,26 @@
+<!--
+	For other Evidon coverage, see Evidon.xml.
+
+
+	^: dropped
+
+
+	Fully covered subdomains:
+
+		- ba-cdn
+		- purplebox
+
+-->
+<ruleset name="Ghostery">
+
+	<target host="ghostery.com" />
+	<target host="*.ghostery.com" />
+
+
+	<rule from="^http://(?:www\.)?ghostery\.com/"
+		to="https://www.ghostery.com/" />
+
+	<rule from="^http://(ba-cdn|purplebox)\.ghostery\.com/"
+		to="https://$1.ghostery.com/" />
+
+</ruleset>

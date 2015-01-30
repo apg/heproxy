@@ -1,0 +1,13 @@
+<ruleset name="LibraryThing">
+
+	<target host="librarything.com" />
+	<target host="*.librarything.com" />
+
+
+	<securecookie host="^(?:.*\.)?librarything\.com$" name=".+" />
+
+
+	<rule from="^http://((?:pics|static|www)\.)?librarything\.com/"
+		to="https://$1librarything.com/" />
+
+</ruleset>

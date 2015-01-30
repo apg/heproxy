@@ -1,0 +1,26 @@
+<!--
+	Mixed image from widgets.digg.com
+
+-->
+<ruleset name="Deal Extreme" platform="mixedcontent">
+
+	<target host="dealextreme.com" />
+	<target host="*.dealextreme.com" />
+	<target host="dx.com" />
+	<target host="*.dx.com" />
+	<target host="img.dxcdn.com" />
+
+
+	<securecookie host="^.*\.d(?:ealextreme|x)\.com$" name=".+" />
+
+
+	<rule from="^http://((?:club|e|m|www)\.)?dealextreme\.com/"
+		to="https://$1dealextreme.com/" />
+
+	<rule from="^http://((?:cart|club|cs|deals|e|passport|s|www)\.)?dx\.com/"
+		to="https://$1dx.com/" />
+
+	<rule from="^http://img\.dxcdn\.com/"
+		to="https://img.dxcdn.com/" />
+
+</ruleset>

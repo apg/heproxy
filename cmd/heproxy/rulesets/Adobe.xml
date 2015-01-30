@@ -1,0 +1,198 @@
+<!--
+	For rules causing false/broken MCB, see Adobe.com-falsemixed.xml.
+
+	For problematic rules, see Adobe-mismatches.xml.
+
+
+	Other Adobe rulesets:
+
+		- Adobe_Connect.xml
+		- Adobe-Digital-Marketing.xml
+		- Adobe_login.com.xml
+		- Adobetag.com.xml
+		- Hitbox.com.xml
+		- Macromedia.com.xml
+		- Offermatica.com.xml
+		- Scene7.xml
+		- Typekit.xml
+
+
+	CDN buckets:
+
+		- thumbnails-tv.adobe.com.edgekey.net
+		- wwwimages2.adobe.com.edgekey.net
+
+		- airdownload.adobe.com.edgesuite.net
+		- new-tv.adobe.com.edgesuite.net
+		- wwwimages.adobe.com.edgesuite.net
+
+		- adobe.com.d1.sc.omtrdc.net
+		- adobe.com.ssl.d1.sc.omtrdc.net
+
+
+	Nonfunctional subdomains:
+
+		- experiencedelivers ¹
+		- labs ²
+		- training ²
+
+	¹ Redirects to www; mismatched, CN: *.day.com
+	² Refused
+
+
+	Problematic subdomains:
+
+		- ^ ¹
+		- airdownload ²
+		- gaming ¹
+		- get2 ⁴
+		- html ¹
+		- kb2 ¹
+		- ns ⁵
+		- stats ⁶
+		- thumbnails.tv ²
+		- wwwimages ²
+
+	¹ Works, mismatched, CN: www.adobe.com
+	² Works, akamai
+	⁴ Mismatched, CN: get.adobe.com
+	⁵ 404; mismatched, CN: www.adobe.com
+	⁶ Mismatched, CN: *.d1.sc.omtrdc.net
+
+
+	Partially covered subdomains:
+
+		- blogs ¹
+		- fpdownload ³
+		- ns		(→ www)
+
+	¹ webplatform blog redirects to http
+	³ crossdomain.xml excluded
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- aihdownload
+		- entitlement.auth
+		- sp.auth
+		- bugbase
+		- community
+		- cookbooks
+		- creative
+
+		- \w\w.creative:
+
+			- ap
+			- d[0-3]
+			- eu
+			- us
+
+		- edexchange
+		- cem.events
+		- forums
+		- get
+		- get2		(→ get)
+		- get3
+		- helpx
+		- images-tv
+		- kuler
+		- max
+		- adobeid-na1.services
+		- sstats
+		- stats		(→ mxmacromedia.d1.sc.omtrdc.net)
+		- store1
+		- success
+		- thumbnails-tv
+		- tv
+		- thumbnails.tv *
+		- verify
+		- wwwimages *
+		- wwwimages2
+
+	* → akamai
+
+
+	Insecure cookies are set for these domains:
+
+		- forums.adobe.com
+
+
+	Mixed content:
+
+		- Images, on:
+
+			- tv from thumbnails.tv *
+			- www from wwwimages *
+
+		- Ads/web bugs, on:
+
+			- get from stats *
+			- helpx from events.foreseeresults.com *
+			- tv from www.facebook.com *
+			- www from wwwimages *
+
+	* Secured by us
+
+-->
+<ruleset name="Adobe.com">
+
+	<target host="adobe.com" />
+	<target host="*.adobe.com" />
+		<!--
+			Some pages redirect to http:
+
+				https://trac.torproject.org/projects/tor/ticket/8604
+											-->
+		<exclusion pattern="^http://blogs\.adobe\.com/webplatform(?:$|[?/])" />
+		<!--exclusion pattern="^http://blogs\.adobe\.com/(?!$|\?|(?:acrobat|adobe(connect|ingovernment|life)|aftereffects|captivate|conversations|creativelayer|digital(marketing|dmedia|publishing)|dreamweaver|educationleaders|experiencedelivers|globalization|gunar|indesigndocs|iwamoto|lightroomjournal|photoshopdotcom|premierepro|presenter|readermobile|vikrant)($|\?|/)|wp-content/)" /-->
+		<!--
+			https://mail1.eff.org/pipermail/https-everywhere-rules/2013-May/001605.html
+
+			Breaks video playback:
+						-->
+		<exclusion pattern="^http://fpdownload\.adobe\.com/(?:pub/swz/)?crossdomain\.xml$" />
+		<!--
+			These stylesheets reference resources relative to root:
+										-->
+		<!--exclusion pattern="^http://wwwimages\.adobe.com/www\.adobe\.com/css/labs_import\.css" /-->
+		<!--
+			While these do not:
+						-->
+		<!--exclusion pattern="^http://wwwimages\.adobe.com/www\.adobe\.com/css/(?!assistive|features_test|handheld|print)\.css" /-->
+
+
+	<securecookie host=".*\.adobe\.com$" name=".+" />
+
+
+	<rule from="^http://adobe\.com/"
+		to="https://www.adobe.com/" />
+
+	<rule from="^http://(aihdownload|(?:entitlement|sp)\.auth|blogs|bugbase|community|cookbooks|(?:\w\w\.)?creative|edexchange|cem\.events|forums|fpdownload|get3?|helpx|images-tv|kuler|max|adobeid-na1\.services|sstats|store1|success|thumbnails-tv|tv|verify|www(?:images2)?)\.adobe\.com/"
+		to="https://$1.adobe.com/" />
+
+	<rule from="^http://get2\.adobe\.com/"
+		to="https://get.adobe.com/" />
+
+	<rule from="^http://ns\.adobe\.com/$"
+		to="https://www.adobe.com/" />
+
+	<rule from="^http://ns\.adobe\.com/xap/"
+		to="https://www.adobe.com/products/xmp/" />
+
+	<rule from="^http://stats\.adobe\.com/"
+		to="https://mxmacromedia.d1.sc.omtrdc.net/" />
+
+	<rule from="^http://thumbnails\.tv\.adobe\.com/"
+		to="https://a248.e.akamai.net/f/1355/4224/3m/thumbnails.tv.adobe.com/" />
+
+	<!--	For all css we haven't explicitly checked
+		for references to root in, rewrite to www:
+								-->
+	<rule from="^http://wwwimages\.adobe\.com/www\.adobe\.com/css/(?!(?:assistive|features_test|handheld|print)\.css)"
+		to="https://www.adobe.com/" />
+
+	<rule from="^http://wwwimages\.adobe\.com/"
+		to="https://a248.e.akamai.net/f/1953/8974/2h/wwwimages.adobe.com/" />
+
+</ruleset>

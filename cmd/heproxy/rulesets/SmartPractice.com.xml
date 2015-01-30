@@ -1,0 +1,22 @@
+<!--
+	Problematic domains:
+
+		- finnchamber.com *
+
+	* Handshake fails
+
+-->
+<ruleset name="SmartPractice">
+
+	<target host="allerderm.com"/>
+	<target host="www.allerderm.com"/>
+	<target host="finnchamber.com"/>
+	<target host="www.finnchamber.com"/>
+
+	<rule from="^http://(www\.)?allerderm\.com/"
+		to="https://allerderm.com/"/>
+
+	<rule from="^http://(?:www\.)?finnchamber\.com/"
+		to="https://www.finnchamber.com/"/>
+
+</ruleset>

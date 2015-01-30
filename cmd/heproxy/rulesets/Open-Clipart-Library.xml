@@ -1,0 +1,19 @@
+<!--
+	Fully covered subdomains:
+
+		- (www.)
+
+-->
+<ruleset name="Open Clipart Library">
+
+	<target host="openclipart.org" />
+	<target host="*.openclipart.org" />
+
+
+	<securecookie host="^\.openclipart\.org$" name=".+" />
+
+
+	<rule from="^http://(www\.)?openclipart\.org/"
+		to="https://$1openclipart.org/" />
+
+</ruleset>

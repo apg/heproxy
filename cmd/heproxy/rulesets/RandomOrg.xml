@@ -1,0 +1,26 @@
+<!--
+	These altnames don't exist:
+
+		- codes.random.org
+		- feeds.random.org
+		- raffles.random.org
+		- widgets.random.org
+
+-->
+<ruleset name="Random.org">
+
+	<target host="random.org" />
+	<target host="*.random.org" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="\.random\.org$" name="^RDOSESSION$" /-->
+
+	<securecookie host="\.random\.org$" name=".+" />
+
+
+	<rule from="^http://((?:api|draws|files|games|tuples|www)\.)?random\.org/"
+		to="https://$1random.org/" />
+
+</ruleset>

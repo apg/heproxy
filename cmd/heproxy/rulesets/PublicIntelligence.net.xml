@@ -1,0 +1,17 @@
+<!--
+	Fully covered subdomains:
+
+		- (www.)?
+		- info
+
+-->
+<ruleset name="Publicintelligence.net">
+
+	<target host="publicintelligence.net" />
+	<target host="*.publicintelligence.net" />
+
+
+	<rule from="^http://(info\.|www\.)?publicintelligence\.net/"
+		to="https://$1publicintelligence.net/" />
+
+</ruleset>

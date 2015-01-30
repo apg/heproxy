@@ -1,0 +1,13 @@
+<ruleset name="twisp.me">
+
+	<target host="twisp.me" />
+	<target host="*.twisp.me" />
+
+
+	<securecookie host="^(?:w*\.)?twisp\.me$" name=".+" />
+
+
+	<rule from="^http://(www\.)?twisp\.me/"
+		to="https://$1twisp.me/" />
+
+</ruleset>

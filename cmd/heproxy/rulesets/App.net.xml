@@ -1,0 +1,39 @@
+<!--
+	CDN buckets:
+
+		- d2c01jv13s9if1.cloudfront.net
+		- d2rfichhc2fb9n.cloudfront.net
+		- d39zheejy3ckol.cloudfront.net
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- account
+		- alpha
+		- files
+		- join
+
+-->
+<ruleset name="App.net">
+
+	<target host="app.net" />
+	<target host="*.app.net" />
+
+
+	<!--	Secured by server:
+					-->
+	<!--securecookie host="^\.app\.net$" name="^mt_sessionid$" /-->
+	<!--
+		Not secured by server:
+					-->
+	<!--securecookie host="^(alpha\.|www\.)?app\.net$" name="^csrftoken$" /-->
+	<!--securecookie host="^\.app\.net$" name="^mt_uic$" /-->
+
+	<securecookie host="^(?:(?:account|alpha|\.?join|www)\.)?app\.net$" name=".+" />
+
+
+	<rule from="^http://((?:account|alpha|files|join|www)\.)?app\.net/"
+		to="https://$1app.net/" />
+
+</ruleset>

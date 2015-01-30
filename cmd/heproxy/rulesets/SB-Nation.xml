@@ -1,0 +1,82 @@
+<!--
+	For problematic rules, see SB_Nation.com-problematic.xml.
+
+
+	Other Vox Media rulesets:
+
+		- The-Verge.xml
+
+
+	CDN buckets:
+
+	- s3.amazonaws.com/assets.sbnation.com/
+	- chalk-images.s3.amazonaws.com
+
+	- ddrgqsxlcy7wq.cloudfront.net
+
+		- cdn[0-3].sbnation.com
+
+	- 1876.voxcdn.com		(404s over https)
+	- 1876-fonts.voxcdn.com		(403 over http; 404 over -s)
+
+	- sbnation-d3.openxenterprise.com
+	- sbnation.theresumator.com
+
+
+	Nonfunctional domains:
+
+		- blog.sbnation.com *
+
+	* Refused
+
+
+	Problematic domains:
+
+		- sbnation.com ¹
+
+	¹ Refused
+
+
+	Fully covered domains:
+
+		- (www.)sbnation.com	(^ → www)
+		- cdn[0-3].sbnation.com	(→ ddrgqsxlcy7wq.cloudfront.net)
+		- fonts.sbnation.com	(→ d1jcofl6pfjesh.cloudfront.net)
+
+
+	Data from cdn[0-3] all appear identical
+
+-->
+<ruleset name="SB Nation (partial)">
+
+	<target host="sbnation.com" />
+	<target host="*.sbnation.com" />
+	<target host="share.sbndev.net" />
+
+
+	<!--	Observed cookies:
+			- _session_id
+		-->
+	<securecookie host="^www\.sbnation\.com$" name=".*" />
+
+
+	<rule from="^http://(?:www\.)?sbnation\.com/"
+		to="https://www.sbnation.com/" />
+
+	<rule from="^http://assets\.sbnation\.com/"
+		to="https://s3.amazonaws.com/assets.sbnation.com/" />
+
+	<rule from="^http://cdn\d\.sbnation\.com/"
+		to="https://ddrgqsxlcy7wq.cloudfront.net/" />
+
+	<rule from="^http://fonts\.sbnation\.com/"
+		to="https://d1jcofl6pfjesh.cloudfront.net/" />
+
+	<!--	cert: *.openxenterprise.com	-->
+	<rule from="^http://ox-d\.sbnation\.com/"
+		to="https://sbnation-d3.openxenterprise.com/" />
+
+	<rule from="^http://share\.sbndev\.net/"
+		to="https://s3.amazonaws.com/share.sbndev.net/" />
+
+</ruleset>

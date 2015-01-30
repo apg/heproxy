@@ -1,0 +1,50 @@
+<!--
+	Nonfunctional subdomains:
+
+		- chatlogs	(times out)
+		- js
+		- lists *
+		- stats		(times out)
+		- yo ³
+
+	* Prints tree
+	³ Prints "It works!"; mismatched, CN: www.jabber.ru
+
+
+	Mixed content:
+
+		- css on www from fonts.googleapis.com *
+
+		- Images on www from habrastorage.org *
+
+	* Secured by us
+
+-->
+<ruleset name="Jabber.ru (partial)">
+
+	<target host="jabber.ru" />
+	<target host="*.jabber.ru" />
+
+
+	<!--	Cookie set by reg page and
+		not what is normally on www.	-->
+	<securecookie host="^www\.jabber\.ru$" name="^PHPSESSID$" />
+
+
+	<!--	!www times out.	-->
+	<rule from="^http://jabber\.ru/"
+		to="https://www.jabber.ru/" />
+
+	<rule from="^http://www\.jabber\.ru/"
+		to="https://www.jabber.ru/" />
+
+	<!--	Cert doesn't match reg,
+		most data appear to be on www.	-->
+	<rule from="^http://reg\.jabber\.ru/"
+		to="https://reg.jabber.ru/" />
+
+	<!--	Not on www.	-->
+	<rule from="^https://www\.jabber\.ru/xreg/captcha/"
+		to="http://reg.jabber.ru/xreg/captcha/" downgrade="1" />
+
+</ruleset>

@@ -1,0 +1,20 @@
+<!--
+	(www.)?: Refused
+
+-->
+<ruleset name="BlueGenio.com" default_off="connection refused">
+
+	<target host="bluegenio.com" />
+	<target host="*.bluegenio.com" />
+
+
+	<securecookie host="^(?:www)?\.bluegenio\.com$" name=".+" />
+
+
+	<!--	Server redirects to www over
+		http so copy that behavior:
+						-->
+	<rule from="^http://(?:www\.)?bluegenio\.com/"
+		to="https://www.bluegenio.com/" />
+
+</ruleset>

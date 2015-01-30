@@ -1,0 +1,16 @@
+<ruleset name="Sparkfun">
+
+	<target host="sparkfun.com" />
+	<target host="*.sparkfun.com" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^\.forum\.sparkfun\.com$" name=".+" /-->
+	<securecookie host="^(?:forum)?\.sparkfun\.com$" name=".+" />
+
+
+	<rule from="^http://((?:analytics|cdn|data|forum|learn|static|www)\.)?sparkfun\.com/"
+		to="https://$1sparkfun.com/" />
+
+</ruleset>

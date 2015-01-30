@@ -1,0 +1,45 @@
+<!--
+	The Attachmate Group
+
+	Other Attachmate Group rulesets:
+
+		- Attachmate.xml
+		- NetIQ.xml
+		- Novell.xml
+		- OpenSUSE.xml
+		- SUSE.xml
+
+
+	Nonfunctional domains:
+
+		- attachmategroup.com ¹
+		- www.attachmategroup.com ²
+
+	¹ Refused
+	² Dropped
+
+
+	Insecure cookies are set for these domains:
+
+		- .attachmategroup.com
+		- esp.attachmategroup.com
+		- login.attachmategroup.com
+
+-->
+<ruleset name="Attachmate Group.com (partial)">
+
+	<target host="*.attachmategroup.com" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^\.attachmategroup\.com$" name="IPCZQX\w{10}$" /-->
+	<!--securecookie host="^(esp|login)\.attachmategroup\.com$" name="^(UrnNovellNidpClusterMemberId|lb_esp|urn:novell:nidp:cluster:member:id)$" /-->
+
+	<securecookie host="^(?:esp|login)\.attachmategroup\.com$" name=".+" />
+
+
+	<rule from="^http://(esp|login)\.attachmategroup\.com/"
+		to="https://$1.attachmategroup.com/" />
+
+</ruleset>

@@ -1,0 +1,64 @@
+<!--
+	Uppsala university
+
+
+	Nonfunctional subdomains:
+
+		- (www.)astro *
+		- user.it *
+		- www.uaf ²
+
+	* Dropped
+	² Handshake fails
+
+
+	Fully covered subdomains:
+
+		- (www.)		(^ → www)
+		- filer.anst
+		- www.anst
+		- boxer.bmc
+		- it.bmc
+		- dropbox
+		- helpdesk
+		- www.it
+		- www.listserv
+		- filer.student
+		- home.student
+		- mail.teknik
+		- tor.uadm
+		- www.uppmax
+		- www.uuinnovation
+		- webmail
+		- www-hotel
+
+
+	Insecure cookies are set for these domains:
+
+		- www.it
+
+
+	Not all subdomains suports ssl, here are those that do.
+
+ -->
+<ruleset name="UU.se" platform="mixedcontent">
+
+	<target host="uu.se" />
+	<target host="*.uu.se" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^www\.it\.uu\.se$" name="^PHPSESSID$" /-->
+
+	<securecookie host="^www\.it\.uu\.se$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?uu\.se/"
+		to="https://www.uu.se/" />
+
+	<rule from="^http://((?:filer|www)\.anst|(?:boxer|it)\.bmc|dropbox|filer|helpdesk|www\.it|www\.listserv|(?:filer|home)\.student|mail\.teknik|tor\.uadm|www\.uppmax|www\.uuinnovation|webmail|www-hotel)\.uu\.se/"
+		to="https://$1.uu.se/" />
+
+</ruleset>
+

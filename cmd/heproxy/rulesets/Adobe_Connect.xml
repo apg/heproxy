@@ -1,0 +1,28 @@
+<!--
+	For other Adobe coverage, see Adobe.xml.
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- bridges
+
+		- events-emea\d+:
+
+			- events-emea2
+
+		- events-na[1-9]
+		- events-na1[01]
+		- na\d+cps
+
+-->
+<ruleset name="Adobe Connect.com">
+
+	<target host="adobeconnect.com" />
+	<target host="*.adobeconnect.com" />
+
+
+	<rule from="^http://((?:bridges|events-(?:emea\d+|na\d+)|na\d+cps|www)\.)?adobeconnect\.com/"
+		to="https://$1adobeconnect.com/" />
+
+</ruleset>

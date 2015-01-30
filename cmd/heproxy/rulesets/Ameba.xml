@@ -1,0 +1,29 @@
+<!--
+	Nonfunctional domains:
+
+		- link.ameba.jp	(times out)
+		- vc.ameba.jp	(times out)
+
+-->
+<ruleset name="Ameba (partial)" platform="mixedcontent">
+
+	<target host="ameba.jp" />
+	<target host="*.ameba.jp" />
+		<exclusion pattern="^http://stat\.ameba\.jp/user_images/" />
+
+
+	<securecookie host="^.*\.ameba\.jp$" name=".*" />
+
+
+	<!--	Cert is only valid for www.	-->
+	<rule from="^http://(?:www\.)?ameba\.jp/"
+		to="https://www.ameba.jp/" />
+
+	<!--	stat: Akamai	-->
+	<rule from="^http://(?:ssl|stat)\.ameba\.jp/"
+		to="https://ssl.ameba.jp/" />
+
+	<rule from="^http://user\.ameba\.jp/"
+		to="https://user.ameba.jp/" />
+
+</ruleset>

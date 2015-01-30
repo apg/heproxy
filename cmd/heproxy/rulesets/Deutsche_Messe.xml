@@ -1,0 +1,24 @@
+<!--
+	Other Deutsche Messe rulesets:
+
+		- CeBIT.de.xml
+		- Hannover_Messe.de.xml
+
+
+	Nonfunctional subdomains:
+
+		- balder	(times out)
+		- daguerre ²
+
+	² Refused
+
+-->
+<ruleset name="Deutsche Messe (partial)">
+
+	<target host="files.messe.de" />
+
+
+	<rule from="^http://files\.messe\.de/"
+		to="https://files.messe.de/" />
+
+</ruleset>

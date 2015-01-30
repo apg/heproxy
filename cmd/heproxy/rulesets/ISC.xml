@@ -1,0 +1,55 @@
+<!--
+	Problematic domains:
+
+		- sie	(shows security)
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- bind10
+		- bindforum
+		- confluence
+		- dhcpforum
+		- dlv
+		- kb
+		- lists
+		- security
+		- sie	(→ security)
+		- sns
+		- store
+		- support
+
+
+	Insecure cookies are set for these domains:
+
+		- kb
+
+
+	Mixed content:
+
+		- Images on www from www *
+
+	* Secured by us
+
+-->
+<ruleset name="ISC">
+
+	<target host="isc.org" />
+	<target host="*.isc.org" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^kb\.isc\.org$" name="^KMPSESS$" /-->
+
+	<securecookie host=".+\.isc\.org$" name=".+" />
+
+
+	<rule from="^http://((?:bind10|bindforum|confluence|dhcpforum|dlv|kb|lists|security|sns|store|support|www)\.)?isc\.org/"
+		to="https://$1isc.org/" />
+
+	<rule from="^http://sie\.isc\.org/"
+		to="https://security.isc.org/" />
+
+</ruleset>

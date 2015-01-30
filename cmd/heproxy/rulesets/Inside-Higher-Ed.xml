@@ -1,0 +1,10 @@
+<ruleset name="Inside Higher Ed.com">
+
+	<target host="insidehighered.com" />
+	<target host="*.insidehighered.com" />
+
+
+	<rule from="^http://(careers\.|www\.)?insidehighered\.com/"
+		to="https://$1insidehighered.com/" />
+
+</ruleset>

@@ -1,0 +1,40 @@
+<!--
+	For other Attachmate Group coverage, see Attachmate-Group.xml.
+
+
+	Nonfunctional subdomains:
+
+		- community *
+
+	* Refused
+
+
+	Problematic subdomains:
+
+		- ^ *
+
+	* Refused
+
+
+	Fully covered subdomains:
+
+		- (www.)?	(^ → www)
+		- forums
+
+-->
+<ruleset name="NetIQ.com (partial)" platform="mixedcontent">
+
+	<target host="netiq.com" />
+	<target host="*.netiq.com" />
+
+
+	<securecookie host="^(?:www)?\.netiq\.com$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?netiq\.com/"
+		to="https://www.netiq.com/" />
+
+	<rule from="^http://forums\.netiq\.com/"
+		to="https://forums.netiq.com/" />
+
+</ruleset>

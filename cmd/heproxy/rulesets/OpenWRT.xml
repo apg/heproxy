@@ -1,0 +1,46 @@
+<!--
+	For problematic rules, see OpenWRT-mismatches.xml.
+
+
+	Nonfunctional subdomains:
+
+		- git		(refused)
+		- kamikaze *
+
+	* Shows www; mismatched, CN: www.openwrt.org
+
+
+	Problematic subdomains:
+
+		- wiki	(works; mismatched, CN: subsignal.org)
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- dev
+		- downloads
+		- forum
+		- lists
+
+-->
+<ruleset name="OpenWRT (partial)">
+
+	<target host="openwrt.org" />
+	<target host="*.openwrt.org" />
+
+
+	<securecookie host="^(?:.*\.)?openwrt\.org$" name=".*" />
+
+
+	<rule from="^http://openwrt\.org/"
+		to="https://openwrt.org/" />
+
+	<rule from="^http://(dev|downloads|forum|lists|www)\.openwrt\.org/"
+		to="https://$1.openwrt.org/" />
+
+	<rule from="^http://wiki\.openwrt\.org/lib/tpl/ameoto/images/(bg(?:-2)?|footer|openwrt-logo)\.png$"
+		to="https://openwrt.org/.styles/img/$1.png" />
+
+
+</ruleset>

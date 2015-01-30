@@ -1,0 +1,17 @@
+<!--
+	www times out.
+
+-->
+<ruleset name="Friends of WikiLeaks">
+
+	<target host="wlfriends.org" />
+	<target host="www.wlfriends.org" />
+
+
+	<securecookie host="^wlfriends\.org$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?wlfriends\.org/"
+		to="https://wlfriends.org/"/>
+
+</ruleset>

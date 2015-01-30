@@ -1,0 +1,19 @@
+<!--
+	Nonfunctional subdomains
+
+		- ocsp
+
+-->
+<ruleset name="DigiCert">
+
+	<target host="digicert.com" />
+	<target host="*.digicert.com" />
+
+
+	<securecookie host="^.*\.digicert\.com$" name=".*" />
+
+
+	<rule from="^http://((?:api|blog|content|edge[1-4]|login|www\.origin|www)\.)?digicert\.com/"
+		to="https://$1digicert.com/" />
+
+</ruleset>

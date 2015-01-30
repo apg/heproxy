@@ -1,0 +1,29 @@
+<!--
+	Nonfunctional subdomains:
+
+	Fully covered subdomains:
+
+		- ^
+		- members
+		- www
+		- blog
+		- faq
+
+-->
+<ruleset name="NearlyFreeSpeech.NET">
+
+	<target host="nearlyfreespeech.net" />
+	<target host="*.nearlyfreespeech.net" />
+	<target host="*.members.nearlyfreespeech.net" />
+
+
+	<securecookie host="^\.members\.nearlyfreespeech\.net$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?nearlyfreespeech\.net/"
+		to="https://www.nearlyfreespeech.net/" />
+
+	<rule from="^http://(members|blog|faq)\.nearlyfreespeech\.net/"
+		to="https://$1.nearlyfreespeech.net/" />
+
+</ruleset>

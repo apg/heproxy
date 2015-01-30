@@ -1,0 +1,54 @@
+<!--	!functional:
+		- faq			(refused)
+		- origin-dbcalc		(timeout)
+		- origin-ircalc		(ditto)
+		- origin-pe
+		- origin-postcalc	(timeout)
+		- ircalc		(Akamai, redirects to http)
+		- pe.usps		(ditto)
+		- postcalc		(ditto)
+
+
+	Fully covered subdomains:
+
+		- (www.)?	(^ → www)
+		- about
+		- cns
+		- fast
+		- gateway
+		- gateway-cat
+		- moversguide
+		- my
+		- poboxes
+		- sdc
+		- shop
+		- store
+		- tools
+
+
+	These altnames don't exist:
+
+		- www.eddm.usps.com
+
+
+	Mixed content:
+
+		- Bug on tools from sdc *
+
+	* Secured by us
+
+-->
+<ruleset name="USPS.com">
+
+	<target host="usps.com"/>
+	<target host="*.usps.com"/>
+
+	<rule from="^http://usps\.com/"
+		to="https://www.usps.com/"/>
+
+	<securecookie host="^(?:.*\.)?usps\.com$" name=".*"/>
+
+	<rule from="^http://(about|cns|fast|gateway|gateway-cat|moversguide|my|poboxes|sdc|shop|store|tools|www)\.usps\.com/"
+		to="https://$1.usps.com/"/>
+
+</ruleset>

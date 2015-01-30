@@ -1,0 +1,11 @@
+<ruleset name="thephone.coop (partial)">
+
+	<target host="thephone.coop" />
+	<target host="*.thephone.coop" />
+		<exclusion pattern="^http://(?:www\.)?thephone\.coop/(?!css/|favicon\.ico|images/|media/|scripts/)" />
+
+
+	<rule from="^http://((?:my|order|plesk2|www)\.)?thephone\.coop/"
+		to="https://$1thephone.coop/" />
+
+</ruleset>

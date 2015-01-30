@@ -1,0 +1,29 @@
+<!--
+	Nonfunctionla subdomains:
+
+		- nightly *
+		- builds.nightly *
+
+	* http reply
+
+
+	Mixed content:
+
+		- Images on www from (www.) *
+
+	* Secured by us
+
+-->
+<ruleset name="Webkit.org">
+
+	<target host="webkit.org" />
+	<target host="*.webkit.org" />
+
+
+	<securecookie host="^(?:bugs|trac|www)?\.webkit\.org$" name=".+" />
+
+
+	<rule from="^http://((?:bugs|lists|trac|www)\.)?webkit\.org/"
+		to="https://$1webkit.org/" />
+
+</ruleset>

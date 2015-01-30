@@ -1,0 +1,39 @@
+<!--
+	Nonfunctional subdomains:
+
+		- blog ¹
+		- forums ¹
+		- suspended ²
+		- templates ¹
+		- webmail ¹
+
+	¹ Plaintext reply
+	² Refused
+
+
+	Fully covered subdomains:
+
+		- (www.)?
+		- chat
+		- gbclient
+		- mail...(:8443)?
+		- secure
+		- support
+		- tickets
+		- tracking
+
+-->
+<ruleset name="HostGator.com (partial)">
+
+	<target host="hostgator.com" />
+	<target host="*.hostgator.com" />
+		<exclusion pattern="^http://(?:blog|forums|suspended|templates)\.hostgator\.com/" />
+
+
+	<securecookie host=".+\.hostgator\.com$" name=".+" />
+
+
+	<rule from="^http://(\w+\.)?hostgator\.com(:8443)?/"
+		to="https://$1hostgator.com$2/" />
+
+</ruleset>

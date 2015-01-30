@@ -1,0 +1,96 @@
+<!--
+	For rules causing false/broken MCB, see Outbrain.com-falsemixed.xml.
+
+	For problematic rules, see Outbrain-mismatches.xml.
+
+
+	CDN buckets:
+
+		- www.outbrain.com.edgesuite.net
+
+			- wp
+
+
+	Nonfunctional subdomains:
+
+		- help *
+
+	* Desk.com
+
+
+	Problematic subdomains:
+
+		- ^ ¹
+		- blog ²
+		- selfserve ³
+		- wp ⁴
+		- www ⁵
+
+	¹ Cert only matches *.outbrain.com
+	² Redirects to www, which has mixed css
+	³ Works; mismatched, CN: *.unbounce.com
+	⁴ Works, akamai
+	⁵ Mixed css from $self
+
+
+	Fully covered subdomains:
+
+		- editorial
+		- images
+		- my
+		- paid
+		- traffic
+		- u
+		- widgets *
+		- wp		(→ www)
+
+	* Bugs served on 3rd-party websites
+
+
+	Mixed content:
+
+		- css, on:
+
+			- selfserve from unbouncepages-com.s3.amazonaws.com *
+			- selfserve from dl.dropbox.com *
+			- www from www *
+
+		- Images, on:
+
+			- selfserve from dl.dropbox.com *
+			- www from wp *
+			- www from www *
+
+		- Bugs on www from widgets *
+
+	* Secured by us
+
+-->
+<ruleset name="Outbrain (partial)">
+
+	<target host="outbrain.com" />
+	<target host="*.outbrain.com" />
+		<!--exclusion pattern="^http://(help|selfserve)\.outbrain\.com/" /-->
+		<!--
+			Avoid false/broken MCB:
+						-->
+		<!--exclusion pattern="^http://blog\.outbrain\.com/" /-->
+		<exclusion pattern="^http://(?:www\.)?outbrain\.com/+(?!wp-content/|wp-includes/)" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^\.outbrain\.com$" name="^obuid$" /-->
+	<!--securecookie host="^editorial\.outbrain\.com$" name="^obroute$" /-->
+	<!--securecookie host="^my\.outbrain\.com$" name="^(JSESSIONID|obroute2)$" /-->
+
+	<securecookie host="^\w+\.outbrain\.com$" name=".+" />
+
+
+	<rule from="^http://(?:wp\.|www\.)?outbrain\.com/"
+		to="https://www.outbrain.com/" />
+
+	<rule from="^http://(editorial|u|widgets|images|my|paid|traffic)\.outbrain\.com/"
+		to="https://$1.outbrain.com/" />
+
+</ruleset>

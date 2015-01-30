@@ -1,0 +1,13 @@
+<ruleset name="AK-Vorrat" platform="cacert mixedcontent">
+
+	<target host="vorratsdatenspeicherung.de" />
+	<target host="*.vorratsdatenspeicherung.de" />
+
+
+	<securecookie host="^(?:wiki\.|www\.)?vorratsdatenspeicherung\.de$" name=".+" />
+
+
+	<rule from="^http://(wiki\.|www\.)?vorratsdatenspeicherung\.de/"
+		to="https://$1vorratsdatenspeicherung.de/" />
+
+</ruleset>

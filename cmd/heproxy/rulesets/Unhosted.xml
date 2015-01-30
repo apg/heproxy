@@ -1,0 +1,16 @@
+<!--
+	Problematic subdomains:
+
+		- www		(prints "See https://unhosted.org/")
+
+-->
+<ruleset name="Unhosted ">
+
+	<target host="unhosted.org" />
+	<target host="*.unhosted.org" />
+
+
+	<rule from="^http://(?:(apps\.)|www\.)?unhosted\.org/"
+		to="https://$1unhosted.org/" />
+
+</ruleset>

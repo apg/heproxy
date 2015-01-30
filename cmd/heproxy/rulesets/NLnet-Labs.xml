@@ -1,0 +1,14 @@
+<ruleset name="NLnet Labs">
+
+	<target host="opendnssec.org"/>
+	<target host="*.opendnssec.org"/>
+
+	<securecookie host="^wiki\.opendnssec\.org$" name=".*"/>
+
+	<rule from="^http://opendnssec\.org/"
+		to="https://www.opendnssec.org/"/>
+
+	<rule from="^http://(svn|wiki|www)\.opendnssec\.org/"
+		to="https://$1.opendnssec.org/"/>
+
+</ruleset>

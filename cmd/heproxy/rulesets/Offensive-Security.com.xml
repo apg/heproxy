@@ -1,0 +1,18 @@
+<ruleset name="Offensive-Security.com">
+
+	<target host="offensive-security.com" />
+	<target host="*.offensive-security.com" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^forums\.offensive-security\.com$" name="^bb_sessionhash$" /-->
+
+	<securecookie host="^\.offensive-security\.com$" name="^__utm\w$" />
+	<securecookie host="^forums\.offensive-security\.com$" name=".+" />
+
+
+	<rule from="^http://(forums\.|www\.)?offensive-security\.com/"
+		to="https://$1offensive-security.com/" />
+
+</ruleset>

@@ -1,0 +1,23 @@
+<!--
+	Problematic subdomains:
+
+		- (www.)	(works; mismatched, CN: *.comscore.com)
+
+
+	Fully covered subdomains:
+
+		- int
+
+-->
+<ruleset name="Sitestat">
+
+	<target host="*.sitestat.com" />
+
+
+	<securecookie host="^.*\.sitestat\.com$" name=".*" />
+
+
+	<rule from="^http://(de|fr|int|nl|uk)\.sitestat\.com/"
+		to="https://$1.sitestat.com/" />
+
+</ruleset>

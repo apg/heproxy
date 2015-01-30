@@ -1,0 +1,10 @@
+<ruleset name="The Chronicles of George">
+
+	<target host="chroniclesofgeorge.com" />
+	<target host="*.chroniclesofgeorge.com" />
+
+
+	<rule from="^http://(forum\.|www\.)?chroniclesofgeorge\.com/"
+		to="https://$1chroniclesofgeorge.com/" />
+
+</ruleset>

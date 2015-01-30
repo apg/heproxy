@@ -1,0 +1,34 @@
+<!--
+	Linkoping university
+
+	Lots of subdomains lack ssl.
+
+
+	Nonfunctional subdomains:
+
+		- fe.itn *
+		- kts.itn *
+		- ncva.itn *
+		- staffwww.itn ²
+		- www.lysator	(refused)
+		- m *
+		- mobil		(redirects to www, valid cert)
+		- sah *
+
+	* Shows www, valid cert
+	² Plaintext reply
+
+-->
+<ruleset name="LIU.se">
+
+	<target host="liu.se" />
+	<target host="*.liu.se" />
+
+
+	<rule from="^http://(?:www\.)?(lith\.|student\.)?liu\.se/"
+		to="https://www.$1liu.se/" />
+
+	<rule from="^http://www\.(hu|ibl|ida|imh|isak|isv|tema)\.liu\.se/"
+		to="https://www.$1.liu.se/" />
+
+</ruleset>

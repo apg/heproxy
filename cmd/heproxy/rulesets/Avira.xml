@@ -1,0 +1,17 @@
+<ruleset name="Avira">
+
+	<target host="avira.com" />
+	<target host="*.avira.com" />
+
+
+	<!--securecookie host="^\.avira\.com$" name="^av_cid$" /-->
+	<securecookie host="^www\.avira\.com$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?avira\.com/"
+		to="https://www.avira.com/" />
+
+	<rule from="^http://(?:www\.)?(analysis|forum|license|myaccount|partnernet)\.avira\.com/"
+		to="https://$1.avira.com/" />
+
+</ruleset>

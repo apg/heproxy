@@ -1,0 +1,18 @@
+<ruleset name="TechnologyReview (partial)">
+
+	<target host="technologyreview.com" />
+	<target host="*.technologyreview.com" />
+		<exclusion pattern="^http://(?:www\.)?technologyreview\.com/(?:$|(?:featuredstory|fromtheeditor|news|qa|view)/\d+/\w|magazine/$|tr\d\d/(?:$|\?|\d{4}/|profile\.aspx)|video/$)" />
+	<target host="technologyreview.in" />
+	<target host="www.technologyreview.in" />
+
+	<rule from="^http://(?:www\.)?technologyreview\.(com|in)/"
+		to="https://www.technologyreview.$1/" />
+
+	<rule from="^http://s?metrics\.technologyreview\.com/"
+		to="https://smetrics.technologyreview.com/" />
+
+	<rule from="^http://(subscribe|www2)\.technologyreview\.com/"
+		to="https://$1.technologyreview.com/" />
+
+</ruleset>

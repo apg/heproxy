@@ -1,0 +1,50 @@
+<!--
+	For other Vox Media coverage, see Vox.com.xml.
+
+
+	CDN buckets:
+
+		- d35lb3dl296zwu.cloudfront.net
+
+
+	Problematic subdomains:
+
+		- ^	(dropped)
+
+
+	Mixed content:
+
+		- Web bugs, on mobile and www from:
+
+			- f.curbed.cc *
+			- apeture.displaymarketplace.com *
+			- pixel.quantserve.com *
+			- ox-d.sbnation.com *
+			- b.scorecardresearch.com *
+
+	* Secured by us
+
+-->
+<ruleset name="The Verge.com (partial)">
+
+	<target host="theverge.com" />
+	<target host="*.theverge.com" />
+
+
+	<!--	Set by beacons.
+				-->
+	<securecookie host="^.*\.theverge\.com$" name=".+" />
+
+
+	<!--	Doesn't redirect back, but updates fail to load when rewritten.
+
+	<rule from="http://live\.theverge\.com/"
+		to="https://d35lb3dl296zwu.cloudfront.net/" /-->
+
+	<rule from="^http://(?:www\.)?theverge\.com/"
+		to="https://www.theverge.com/" />
+
+	<rule from="^http://mobile\.theverge\.com/"
+		to="https://mobile.theverge.com/" />
+
+</ruleset>

@@ -1,0 +1,65 @@
+<!--
+	Problematic subdomains:
+
+		- svn	(prints "it works!")
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- blog
+		- bugs
+		- doc
+		- forums
+		- identity
+		- ml
+		- nav
+		- planet
+		- svn		(→ svnweb)
+		- svnweb
+		- wiki
+
+
+	Observed cookie domains:
+
+		- bugs
+		- .forums
+		- ml
+		- wiki
+
+
+	Mixed content:
+
+		- Images, on:
+
+			- blog from blog *
+
+			- planet, from:
+
+				- blog *
+				- blogs.gnome.org *
+				- farm\d.staticflickr.com *
+				- feeds.wordpress.com *
+				- s0.wp.com *
+
+		- Web bug on planet from stats.wordpress.com *
+
+	* Secured by us
+
+-->
+<ruleset name="Mageia">
+
+	<target host="mageia.org" />
+	<target host="*.mageia.org" />
+
+
+	<securecookie host="^(?:.*\.)?mageia\.org$" name=".+" />
+
+
+	<rule from="^http://((?:blog|bugs|doc|forums|identity|ml|nav|planet|wiki|www)\.)?mageia\.org/"
+		to="https://$1mageia.org/" />
+
+	<rule from="^http://svn(?:web)?\.mageia\.org/"
+		to="https://svnweb.mageia.org/" />
+
+</ruleset>

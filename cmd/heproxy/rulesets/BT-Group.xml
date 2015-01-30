@@ -1,0 +1,39 @@
+<!--
+	Other BT Group rulesets:
+
+		- BT.xml
+		- BT_Sport.xml
+		- BT_Sport_for_Business.xml
+		- BT_Wholesale.com.xml
+		- BT_Wi-fi.xml
+		- Dabs.xml
+
+
+	Fully covered domains:
+
+		- www.btplc.com
+		- www.openreach.co.uk
+
+-->
+<ruleset name="BT Group (partial)">
+
+	<target host="www.btplc.com" />
+	<!--
+		* for cross-domain cookie.
+						-->
+	<target host="*.openreach.co.uk" />
+
+
+	<securecookie host="^www\.btplc\.com$" name=".+" />
+	<securecookie host="^\.openreach\.co\.uk$" name=".+" />
+
+
+	<rule from="^http://www\.btplc\.com/"
+		to="https://www.btplc.com/" />
+
+	<!--	!www doesn't appear to exist.
+						-->
+	<rule from="^http://www\.openreach\.co\.uk/"
+		to="https://www.openreach.co.uk/" />
+
+</ruleset>

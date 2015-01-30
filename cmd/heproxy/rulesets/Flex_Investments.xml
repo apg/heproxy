@@ -1,0 +1,17 @@
+<!--
+	(www.)?: Refused
+
+-->
+<ruleset name="Flex Investments" default_off="connection refused">
+
+	<target host="flexinvestments.net" />
+	<target host="*.flexinvestments.net" />
+
+
+	<securecookie host="^(?:w*\.)?flexinvestments\.net$" name=".+" />
+
+
+	<rule from="^http://(www\.)?flexinvestments\.net/"
+		to="https://$1flexinvestments.net/" />
+
+</ruleset>

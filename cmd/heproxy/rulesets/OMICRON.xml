@@ -1,0 +1,10 @@
+<ruleset name="OMICRON (partial)">
+
+	<target host="omicron.at" />
+	<target host="www.omicron.at" />
+
+
+	<rule from="^http://(www\.)?omicron\.at/"
+		to="https://$1omicron.at/" />
+
+</ruleset>

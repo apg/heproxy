@@ -1,0 +1,25 @@
+<!--
+	For problematic rules, see CloudForge-problematic.xml.
+
+
+	For other CollabNet coverage, see CollabNet.xml.
+
+
+	Nonfunctional subdomains:
+
+		- status 	(times out; hosted on TypePad)
+
+-->
+<ruleset name="CloudForge (partial)">
+
+	<target host="cloudforge.com" />
+	<target host="*.cloudforge.com" />
+
+
+	<securecookie host="^(?:ap|hel)p\.cloudforge\.com$" name=".+" />
+
+
+	<rule from="^http://((?:app|help|www)\.)?cloudforge\.com/"
+		to="https://$1cloudforge.com/" />
+
+</ruleset>

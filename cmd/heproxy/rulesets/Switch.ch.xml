@@ -1,0 +1,25 @@
+<!--
+	Other SWITCH rulesets:
+
+		- Switchie.ch.xml
+		- Switchplus.ch.xml
+
+
+	Nonfunctional subdomains:
+
+		- mirror	(dropped)
+
+-->
+<ruleset name="switch.ch">
+
+	<target host="switch.ch" />
+	<target host="*.switch.ch" />
+
+
+	<securecookie host="^\.switch\.ch$" name=".+" />
+
+
+	<rule from="^http://((?:help|traffic\.lan|nic|portal|security|wayf|www|cms\.www|misc\.www)\.)?switch\.ch/"
+		to="https://$1switch.ch/" />
+
+</ruleset>

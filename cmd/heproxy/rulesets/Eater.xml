@@ -1,0 +1,29 @@
+<!--
+	For other Vox Media coverage, see Vox.com.xml.
+
+
+	Nonfunctional subdomains:
+
+		- detroit *
+
+	* Redirects to http
+
+
+	Problematic subdomains:
+
+		- ^ *
+		- dc
+
+	* Dropped
+
+-->
+<ruleset name="Eater.com (partial)">
+
+	<target host="eater.com" />
+	<target host="www.eater.com" />
+
+
+	<rule from="^http://(?:www\.)?eater\.com/"
+		to="https://www.eater.com/" />
+
+</ruleset>

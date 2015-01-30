@@ -1,0 +1,51 @@
+<!--
+	CDN buckets:
+
+		- wac.1257.edgecastcdn.net/??1257/
+
+			- static.jquery.com
+
+		- learningjquery.kswedberg.netdna-cdn.com
+
+			- -ssl doesn't exist
+
+		- jquery-groups.ning.com
+
+
+	Nonfunctional domains:
+
+		- jquery.com subdomains:
+
+			- blog *
+			- bugs *
+			- archive.plugins *
+			- static	(504, CN: gp1.wac.edgecastcdn.net)
+			- try		(unrecognized name)
+
+	* Refused
+
+
+	Fully covered domains:
+
+		- (www.)jquery.com
+		- api.jquery.com
+		- code.jquery.com
+		- forum.jquery.com
+		- learn.jquery.com
+		- meetups.jquery.com
+		- plugins.jquery.com
+
+-->
+<ruleset name="jQuery (partial)">
+
+	<target host="jquery.com" />
+	<target host="*.jquery.com" />
+
+
+	<securecookie host="^(?:forum|meetups)\.jquery\.com$" name=".+" />
+
+
+	<rule from="^http://((?:api|code|forum|learn|meetups|plugins|www)\.)?jquery\.com/"
+		to="https://$1jquery.com/" />
+
+</ruleset>

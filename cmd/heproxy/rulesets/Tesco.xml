@@ -1,0 +1,125 @@
+<!--
+	Partial
+
+	For rules causing false/broken MCB, see Tesco.com-falsemixed.xml.
+
+
+	tesco.scene7.com
+
+
+	Other Tesco rulesets:
+
+		- Clothing_at_Tesco.com.xml
+		- Our_Tesco.com.xml
+		- Tesco_Compare.com.xml
+		- Tesco_Bank.com.xml
+		- Tesco_Diets.com.xml
+		- Tesco_Photo.com.xml
+
+
+	Nonfunctional domains:
+
+		- origin-img.tesco.com
+		- origin-www.tesco.com *
+		- (www.)tescoliving.com *
+		- www.tescomagazine.com *
+
+	* Dropped
+
+
+	Problematic domains:
+
+		- tesco.com subdomains:
+
+			- ^	(dropped)
+			- img *
+			- www	(504, akamai)
+
+		- direct.tescoassets.com *
+		- ui.tescoassets.com *
+
+	* Akamai
+
+
+	Fully covered domains:
+
+		- tesco.com subdomains:
+
+			- direct
+			- img ¹
+			- phone-shop
+			- secure
+
+		- *.tescoassets.com ¹
+
+			- direct
+			- ui
+
+	¹ → secure.tesco.com
+
+
+	Mixed content:
+
+		- css on secure from ui.tescoassets.com *
+
+		- Images on secure from www **
+
+	* On groceries/ when rewritten from www; secured by us
+	** Secured by us
+
+-->
+<ruleset name="Tesco (partial)">
+
+	<target host="tesco.com" />
+	<target host="*.tesco.com" />
+		<!--
+			Avoid false/broken MCB:
+						-->
+		<!--exclusion pattern="^http://(www\.)?tesco\.com/groceries/" /-->
+	<target host="*.tescoassets.com" />
+
+
+	<securecookie host="^secure\.tesco\.com$" name=".+" />
+
+
+	<!--	These paths don't work:
+
+			- wine/$	(redirects to winestore/)
+			- WINE/Help/$	(404)
+
+		These paths redirect back to www:
+
+			- direct/$
+			- direct/help/homepage.page$
+
+		These paths don't:
+
+			- $
+			- c/css/
+			- clubcard/
+			- css/
+			- directuiassets/
+			- exchange$
+			- exchange/$
+			- grocery/images/
+			- homepages/default/[\w.]+.css
+			- offer/$
+			- Wine/MarketingContent/Sites/
+			- wine/UIAssets/
+			- storelocator/
+			- storeLocator/
+			- termsandconditions/privacy.htm$
+					-->
+	<rule from="^http://(?:www\.)?tesco\.com/(?=$|exchange|(?:books|c/css|clubcard/clubcard|css|directuiassets|grocery/images|homepages/default|offer|store[lL]ocator|termsandconditions|whatsinstore|Wine/MarketingContent|wine/UIAssets)/)"
+		to="https://secure.tesco.com/" />
+
+	<rule from="^http://(direct|phone-shop|secure)\.tesco\.com/"
+		to="https://$1.tesco.com/" />
+
+	<rule from="^http://img\.tesco\.com/"
+		to="https://secure.tesco.com/" />
+
+	<rule from="^http://\w+\.tescoassets\.com/"
+		to="https://secure.tesco.com/" />
+
+</ruleset>

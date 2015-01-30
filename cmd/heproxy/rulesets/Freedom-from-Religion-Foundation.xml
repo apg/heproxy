@@ -1,0 +1,14 @@
+<ruleset name="Freedom from Religion Foundation (partial)">
+
+	<target host="ffrf.org" />
+	<target host="*.ffrf.org" />
+		<exclusion pattern="^http://(?:www\.)?ffrf\.org/news/radio(?:$|\?|/)" />
+
+
+	<securecookie host="^\.?ffrf\.org$" name=".+" />
+
+
+	<rule from="^http://(www\.)?ffrf\.org/"
+		to="https://$1ffrf.org/" />
+
+</ruleset>

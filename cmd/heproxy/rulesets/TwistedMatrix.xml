@@ -1,0 +1,65 @@
+<!--
+	As of 2012-06-11, known unprotected subdomains are...
+
+	Using ghs-ssl.googlehosted.com certificate:
+
+		- washort
+		- labs
+		- radix
+
+	Using *.ik.nu certificate:
+
+		- planet
+
+	Not listening on HTTPS:
+
+		- svn
+		- cvs
+		- wolfwood
+
+	Non-web/unused subdomains:
+
+		- ftp
+		- mail
+		- smtp
+		- oloid
+		- irc
+		- projects
+		- xpdev
+
+
+
+
+	Problematic subdomains:
+
+		- buildbot *
+
+	* Works; mismatched, CN: www.twistedmatrix.com
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- glyph
+		- java
+		- seph
+		- speed
+
+-->
+<ruleset name="TwistedMatrix">
+
+	<target host="twistedmatrix.com" />
+	<target host="*.twistedmatrix.com" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^twistedmatrix\.com$" name="(trac_form_token|trac_session)$" /-->
+
+	<securecookie host="^twistedmatrix\.com$" name=".+" />
+
+
+	<rule from="^http://((?:glyph|java|saph|speed|www)\.)?twistedmatrix\.com/"
+		to="https://$1twistedmatrix.com/" />
+
+</ruleset>

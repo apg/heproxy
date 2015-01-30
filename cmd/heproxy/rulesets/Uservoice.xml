@@ -1,0 +1,36 @@
+<!--
+	Other Uservoice rulesets:
+
+		- UvCDN.com.xml
+
+
+	Fully covered subdomains:
+
+		- app
+		- by
+		- cdn
+		- cdn2
+		- developer
+		- translate
+		- *		(per-client subdomains)
+
+-->
+<ruleset name="Uservoice (partial)">
+
+	<target host="uservoice.com"/>
+	<target host="*.uservoice.com"/>
+  <!--	https://trac.torproject.org/projects/tor/ticket/7273
+  	https://trac.torproject.org/projects/tor/ticket/8199 -->
+  <exclusion pattern="^http://(?:blog|email|developer)\.uservoice\.com"/>
+
+
+	<securecookie host="^.*\.uservoice\.com$" name=".*" />
+
+
+	<rule from="^http://(?:www\.)?uservoice\.com/images/"
+		to="https://cdn.uservoice.com/images/"/>
+
+	<rule from="^http://(?!www\.)(\w+)\.uservoice\.com/"
+		to="https://$1.uservoice.com/"/>
+
+</ruleset>

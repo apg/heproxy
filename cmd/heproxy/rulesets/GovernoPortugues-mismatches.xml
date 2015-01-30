@@ -1,0 +1,15 @@
+<!--
+	For ther Governo Português coverage, see Portugal.gov.pt.xml.
+
+-->
+<ruleset name="Governo Português">
+  <target host="portaldocidadao.pt" />
+  <target host="www.portaldocidadao.pt" />
+  <target host="portaldaempresa.pt" />
+  <target host="www.portaldaempresa.pt" />
+
+  <rule from="^http://portaldocidadao\.pt/" to="https://www.portaldocidadao.pt/"/>
+  <rule from="^http://www\.portaldocidadao\.pt/" to="https://www.portaldocidadao.pt/"/>
+  <rule from="^http://portaldaempresa\.pt/" to="https://www.portaldaempresa.pt/"/>
+  <rule from="^http://www\.portaldaempresa\.pt/" to="https://www.portaldaempresa.pt/"/>
+ </ruleset>

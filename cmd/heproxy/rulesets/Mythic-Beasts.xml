@@ -1,0 +1,35 @@
+<!--
+	Nonfunctional subdomains:
+
+		- blog ¹
+		- status	(shows wiki)
+
+	¹ Redirects to www
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- ctrlpanel
+		- secure
+		- static
+		- wiki
+
+-->
+<ruleset name="Mythic Beasts (partial)">
+
+	<target host="mythic-beasts.com" />
+	<target host="*.mythic-beasts.com" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^\.mythic-beasts\.com$" name="^(acct|id)$" /-->
+
+	<securecookie host="^\w+\.mythic-beasts\.com$" name=".*" />
+
+
+	<rule from="^http://((?:ctrlpanel|secure|static|wiki|www)\.)?mythic-beasts\.com/"
+		to="https://$1mythic-beasts.com/$1" />
+
+</ruleset>

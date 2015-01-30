@@ -1,0 +1,45 @@
+<!--
+	Clients are handled in PriceGrabber-clients.xml.
+
+
+	Problematic domains:
+
+		- i.pgcdn.com *
+
+		- *.pgpartner.com	(works; mismatched, CN: www.pricegrabber.com)
+
+		- pricegrabber.com subdomains:
+
+			- ^	(cert only matches www)
+			- ah *
+			- ai *
+
+	* Akamai
+
+-->
+<ruleset name="PriceGrabber" platform="mixedcontent">
+
+	<target host="i.pgcdn.com" />
+	<target host="pricegrabber.com" />
+	<target host="*.pricegrabber.com" />
+
+
+	<!--	Observed cookie domains:
+
+			- .
+			- images
+			- www
+					-->
+	<securecookie host=".*\.pricegrabber\.com$" name=".+" />
+
+
+	<rule from="^http://i\.pgcdn\.com/"
+		to="https://images.pricegrabber.com/" />
+
+	<rule from="^http://(?:a[hi]\.|www\.)?pricegrabber\.com/"
+		to="https://www.pricegrabber.com/"/>
+
+	<rule from="^http://(images|partner)\.pricegrabber\.com/"
+		to="https://$1.pricegrabber.com/" />
+
+</ruleset>

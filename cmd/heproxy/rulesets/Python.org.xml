@@ -1,0 +1,39 @@
+<!--
+	Nonfunctional subdomains:
+
+		- hg *
+		- legacy ²
+		- planet *
+
+	* Refused
+	² Dropped
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- bugs
+		- mail
+		- packages
+		- packaging
+		- wiki
+
+
+	These altnames don't exist:
+
+		- www.bugs.python.org
+
+-->
+<ruleset name="Python.org (partial)">
+
+	<target host="python.org" />
+	<target host="*.python.org" />
+
+
+	<securecookie host="^wiki\.python\.org$" name=".+" />
+
+
+	<rule from="^http://((?:bugs|docs|mail|packages|packaging|wiki|www)\.)?python\.org/"
+		to="https://$1python.org/" />
+
+</ruleset>

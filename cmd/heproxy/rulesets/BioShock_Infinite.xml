@@ -1,0 +1,37 @@
+<!--
+	For other 2K Games coverage, see 2K_Games.xml.
+
+
+	Problematic domains:
+
+		- (www.)?finkmanufacturing.com *
+
+	* Mismatched
+
+
+	Fully covered domains:
+
+		- (www.)?finkmanufacturing.com	(→ www.bioshockinfinite.com)
+
+-->
+<ruleset name="BioShock Infinite">
+
+	<target host="bioshockinfinite.com" />
+	<target host="www.bioshockinfinite.com" />
+	<target host="finkmanufacturing.com" />
+	<target host="www.finkmanufacturing.com" />
+
+
+	<securecookie host="^www\.bioshockinfinite\.com$" name=".+" />
+	<securecookie host="^(?:www\.)?finkmanufacturing\.com$" name=".+" />
+
+
+	<rule from="^http://(www\.)?bioshockinfinite\.com/"
+		to="https://$1bioshockinfinite.com/" />
+
+	<!--	Redirects like so:
+					-->
+	<rule from="^http://(?:www\.)?finkmanufacturing\.com/+([^?/]*).*"
+		to="https://www.bioshockinfinite.com/faq$1" />
+
+</ruleset>

@@ -1,0 +1,25 @@
+<!--
+	Problematic domains:
+
+		- okpartypix.com ¹
+		- www.okpartypix.com ²
+
+	¹ Refused
+	² Mismatched
+
+-->
+<ruleset name="Genesee Photo Systems">
+
+	<target host="geneseephoto.com" />
+	<target host="*.geneseephoto" />
+	<target host="okpartypix.com" />
+	<target host="*.okpartypix.com" />
+
+
+	<securecookie host="^\.(?:geneseephoto|okpartypix)\.com$" name=".+" />
+
+
+	<rule from="^http://(www\.)?(?:geneseephoto|okpartypix)\.com/"
+		to="https://$1geneseephotos.com/" />
+
+</ruleset>

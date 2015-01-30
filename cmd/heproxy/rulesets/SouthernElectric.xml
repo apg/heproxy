@@ -1,0 +1,10 @@
+<!--
+	^: Reset
+
+-->
+<ruleset name="SouthernElectric" platform="mixedcontent">
+  <target host="southern-electric.co.uk" />
+  <target host="www.southern-electric.co.uk" />
+
+  <rule from="^http://(?:www\.)?southern-electric\.co\.uk/" to="https://www.southern-electric.co.uk/"/>
+</ruleset>

@@ -1,0 +1,24 @@
+<!--
+	Nonfunctional:
+
+		- (www.)doubleverify.com	(reset)
+		- info.verifyupload.com		(cert: *.marketo.com; 404)
+
+
+	Fully covered subdomains:
+
+		- cdn
+		- tps30
+		- tps40
+		- tps10206
+-->
+<ruleset name="DoubleVerify (partial)">
+
+	<target host="*.doubleverify.com" />
+
+
+	<!--	tps: Tracking beacon.	-->
+	<rule from="^http://(cdn|tps[34]0|tps10206)\.doubleverify\.com/"
+		to="https://$1.doubleverify.com/" />
+
+</ruleset>

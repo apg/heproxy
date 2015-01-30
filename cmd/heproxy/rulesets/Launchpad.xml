@@ -1,0 +1,34 @@
+<ruleset name="Launchpad">
+    <target host="launchpad.net" />
+    <target host="*.launchpad.net" />
+    <target host="launchpadlibrarian.net" />
+    <target host="*.launchpadlibrarian.net" />
+
+    <securecookie host="^(?:.*\.)?launchpad\.net$" name=".+" />
+    <securecookie host="^(?:.*\.)?launchpadlibrarian\.net$" name=".+" />
+
+    <exclusion pattern="^http://blog\.launchpad\.net/" />
+    <exclusion pattern="^http://news\.launchpad\.net/" />
+
+    <rule from="^http://launchpad\.net/"
+        to="https://launchpad.net/" />
+
+    <!-- For the bazaar.launchpad.net domain, the URL
+         http://bazaar.launchpad.net/ (where there is nothing after the final
+         slash) should be directed to https://launchpad.net/ as a special case.
+         URLs such as http://bazaar.launchpad.net/~example/ where content
+         does come after the final slash should be handled as normal. -->
+    <rule from="^http://bazaar\.launchpad\.net/$"
+        to="https://launchpad.net/" />
+
+    <rule from="^http://([^/:@]+)?\.launchpad\.net/"
+        to="https://$1.launchpad.net/" />
+
+    <rule from="^http://bazaar\.launchpad\.net/(.+)"
+        to="https://bazaar.launchpad.net/$1" />
+
+    <rule from="^http://launchpadlibrarian\.net/"
+        to="https://launchpadlibrarian.net/" />
+    <rule from="^http://([^/:@]+)?\.launchpadlibrarian\.net/"
+        to="https://$1.launchpadlibrarian.net/" />
+</ruleset>

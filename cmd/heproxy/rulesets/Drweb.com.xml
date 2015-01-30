@@ -1,0 +1,72 @@
+<!--
+	Nonfunctional subdomains:
+
+		- awstats	(data differs)
+		- ftp ²
+		- forum ³
+		- live ³
+		- people ⁴
+		- us ²
+		- us1 ²
+
+	² 404
+	³ Plaintext reply
+	⁴ Refused
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- antifraud
+		- antitheft
+		- beta
+		- blogs
+		- bugs
+		- buy
+		- company
+		- customers
+		- download
+		- estore
+		- f2
+		- info
+		- license
+		- mobi
+		- my
+		- network
+		- news
+		- new-support
+		- online
+		- online[13]
+		- osp
+		- pa
+		- partners
+		- pda
+		- products
+		- promotions
+		- solutions
+		- st
+		- stat
+		- support
+		- training
+		- update
+		- vms
+		- wiki
+
+-->
+<ruleset name="Dr.Web">
+
+	<target host="drweb.com" />
+	<target host="*.drweb.com" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^\.drweb\.com$" name="^(drwse|lng)$" /-->
+
+	<securecookie host="^.*\.drweb\.com$" name=".+" />
+
+
+	<rule from="^http://((?:antifraud|antitheft|beta|blogs|bugs|buy|company|customers|download|estore|f2|info|license|mobi|my|network|news|online\d?|osp|pa|partners|pda|products|promotions|solutions|st|stat|(?:new-)?support|training|update|vms|wiki|www)\.)?drweb\.com/"
+		to="https://$1drweb.com/" />
+
+</ruleset>

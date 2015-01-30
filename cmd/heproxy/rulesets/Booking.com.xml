@@ -1,0 +1,24 @@
+<ruleset name="Booking.com">
+
+	<target host="booking.com" />
+	<target host="*.booking.com" />
+	<target host="*.bstatic.com" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^\.booking\.com$" name="^bkng$" /-->
+
+	<securecookie host="^\.booking\.com$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?booking\.com/"
+		to="https://www.booking.com/" />
+
+	<rule from="^http://(admin|bookingbutton|distribution-xml|join|mobile|secure|xml)\.booking\.com/"
+		to="https://$1.booking.com/" />
+
+	<rule from="^http://(\w)\.bstatic\.com/"
+		to="https://$1.bstatic.com/" />
+
+</ruleset>

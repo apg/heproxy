@@ -1,0 +1,69 @@
+<!--
+	CDN buckets:
+
+		- infoworld-production.112.2o7.net
+
+		- wac.34CE.edgecastcdn.net/??34CE/
+
+			- static.businessinsider.com
+
+
+	Nonfunctional subdomains:
+
+		- articles ¹
+		- jobs ²
+
+	¹ 403; CN: ssl2?.cdngc.net
+	² CN: *.jobamatic.com
+
+
+	Partially covered subdomains:
+
+		- au *
+
+	* Some pages redirect to http
+
+
+	Fully covered subdomains:
+
+		- insider
+		- static
+		- static\d
+		- static-ssl
+
+		- static\d.uk:
+
+			- [0-6]
+
+-->
+<ruleset name="BusinessInsider.com (partial)">
+
+	<target host="businessinsider.com" />
+	<target host="*.businessinsider.com" />
+		<!--
+			Many pages redirect to http.
+							-->
+		<!--exclusion pattern="^http://uk\.businessinsider\.com/[\w-]+($|\?)" /-->
+		<!--
+			Exceptions:
+					-->
+	        <exclusion pattern="^http://(?:www\.)?businessinsider\.com/(?!account|assets/|favicon\.ico|login|register)" />
+		<exclusion pattern="^http://au\.businessinsider\.com/(?!image/)" />
+		<!--exclusion pattern="^http://jobs\.businessinsider\.com/($|a/)" /-->
+
+
+	<!--	Tracking cookie set by oascentral:
+							-->
+	<securecookie host="^\.businessinsider\.com$" name="^OAX$" />
+	<securecookie host="^oascentral\.businessinsider\.com$" name=".+" />
+
+
+        <!--    See Simply-Hired-clients.xml for problematic jobs rules.
+									-->
+        <rule from="^http://jobs\.businessinsider\.com/c/"
+                to="https://businessinsider.jobamatic.com/c/" />
+
+        <rule from="^http://((?:au|insider|oascentral|static\d?|static-ssl|static\d\.uk|www)\.)?businessinsider\.com/"
+		to="https://$1businessinsider.com/" />
+
+</ruleset>

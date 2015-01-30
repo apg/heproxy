@@ -1,0 +1,68 @@
+<!--
+	For problematic rules, see News_Limited-problematic.xml.
+
+
+	CDN buckets:
+
+		- media.news.com.au.edgesuite.net
+
+		- resources.news.com.au.edgesuite.net
+			- resources[0-3]?.news.com.au
+
+		- subscription.news.com.au.edgesuite.net/...
+
+		- player.video.news.com.au.edgesuite.net/...
+
+		- static.video.news.com.au.edgesuite.net/...
+
+		- www.news.com.au.edgesuite.net
+
+
+	Nonfunctional domains:
+
+		- resources[0-3]?.news.com.au ¹
+		- search.news.com.au ²
+		- subscription.news.com.au	(500, akamai)
+		- www.news.com.au ¹
+
+	¹ 503, akamai
+	² Dropped
+
+
+	Problematic subdomains:
+
+		- ^ ¹
+		- connect ²
+
+	¹ Works, akamai
+	² Works; mismatched, CN: *.pureprofile.com
+
+
+	These altnames don't exist:
+
+		- www.media.foxsports.news.com.au
+		- www.media.foxsports.news.com.au
+
+-->
+<ruleset name="News Limited (partial)">
+
+	<target host="*.news.com.au" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^myaccount\.news\.com\.au$" name="^JSESSIONID$" /-->
+
+	<securecookie host="^myaccount\.news\.com\.au$" name=".+" />
+
+
+	<rule from="^http://media\.news\.com\.au/"
+		to="https://a248.e.akamai.net/f/248/5306/10/media.news.com.au/" />
+
+	<rule from="^http://(controlpanel\.blogs|myaccount|preferences|sops|sslcam|tags|traktr)\.news\.com\.au/"
+		to="https://$1.news.com.au/" />
+
+	<rule from="^http://connect\.news\.com\.au/"
+		to="https://newsportal.pureprofile.com/" />
+
+</ruleset>

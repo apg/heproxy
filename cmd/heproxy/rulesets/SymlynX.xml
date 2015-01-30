@@ -1,0 +1,12 @@
+<ruleset name="symlynX">
+
+	<target host="symlynx.com"/>
+	<target host="*.symlynx.com"/>
+
+	<!--	www redirects to ^ over http,
+		so copy that behavior:
+					-->
+	<rule from="^http://(extra\.|(?:www\.))?symlynx\.com/"
+		to="https://$1symlynx.com/"/>
+
+</ruleset>

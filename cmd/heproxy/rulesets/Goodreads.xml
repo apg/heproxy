@@ -1,0 +1,18 @@
+<!--
+	Other Goodreads rulesets:
+
+		- Gr-assets.com.xml
+
+-->
+<ruleset name="Goodreads">
+
+	<target host="goodreads.com"/>
+	<target host="*.goodreads.com"/>
+
+	<rule from="^http://(www\.)?goodreads\.com/"
+		to="https://$1goodreads.com/"/>
+
+	<rule from="^http://photo\.goodreads\.com/"
+		to="https://s3.amazonaws.com/photo.goodreads.com/"/>
+
+</ruleset>

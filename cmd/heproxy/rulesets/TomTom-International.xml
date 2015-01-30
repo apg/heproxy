@@ -1,0 +1,48 @@
+<!--
+	TomTom International
+
+
+	Nonfunctional subdomains:
+
+		- corporate ¹
+		- lbs ²
+		- routes ²
+		- static.routes ²
+
+	¹ Shareholder
+	² Reset
+
+
+	Partially covered subdomains:
+
+		- (www.)? *
+
+	* Front page redirects to http
+
+
+	Fully covered subdomains:
+
+		- business
+
+-->
+<ruleset name="TomTom.com (partial)" platform="mixedcontent">
+
+	<target host="tomtom.com" />
+	<target host="*.tomtom.com" />
+		<!--
+			Redirects to http:
+						-->
+		<exclusion pattern="^http://(?:www\.)?tomtom\.com/(?:products|support)/" />
+		<!--
+			Pages within a directory seem to work:
+								-->
+		<exclusion pattern="^http://(?:www\.)?tomtom\.com/(?!\w+/)" />
+
+
+	<securecookie host="^business\.tomtom\.com$" name=".+" />
+
+
+	<rule from="^http://(business\.|www\.)?tomtom\.com/"
+		to="https://$1tomtom.com/" />
+
+</ruleset>

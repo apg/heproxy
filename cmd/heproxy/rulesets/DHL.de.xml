@@ -1,0 +1,8 @@
+<ruleset name="DHL.de" platform="mixedcontent">
+  <target host="dhl.de"/>
+  <target host="*.dhl.de"/>
+
+  <securecookie host="^(?:.*\.)?dhl\.de$" name=".*" />
+
+  <rule from="^http://(?:www\.)?dhl\.de/" to="https://www.dhl.de/"/>
+</ruleset>

@@ -1,0 +1,19 @@
+<ruleset name="DataXu">
+
+	<target host="*.dataxu.com" />
+	<target host="*.w55c.net" />
+
+
+	<securecookie host="^advertisers\.dataxu\.com$" name=".+" />
+	<securecookie host="^\.w55c\.net$" name=".+" />
+
+
+	<rule from="^http://(advertisers|www)\.dataxu\.com/"
+		to="https://$1.dataxu.com/" />
+
+	<!--	Included on 3rd-party websites.
+						-->
+	<rule from="^http://(cdn|cti|i|tags)\.w55c\.net/"
+		to="https://$1.w55c.net/" />
+
+</ruleset>

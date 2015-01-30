@@ -1,0 +1,20 @@
+<!--
+	Nonfunctional subdomains:
+
+		- blog *
+
+	* Shows ads
+
+
+	Fully covered subdomains:
+
+		- (www.)?
+		- ads
+		- support
+
+-->
+<ruleset name="Paper.li (partial)">
+  <target host="paper.li"/>
+  <target host="*.paper.li"/>
+  <rule from="^http://((?:ads|support|www)\.)?paper\.li/" to="https://$1paper.li/"/>
+</ruleset>

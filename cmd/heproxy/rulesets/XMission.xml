@@ -1,0 +1,36 @@
+<!--
+	Nonfunctional subdomains:
+
+		- anon		(dropped)
+		- maddox *
+		- wiki *
+
+	* http reply
+
+
+	Observed subdomains:
+
+		- anon
+		- asset
+		- mail
+		- my
+		- stats
+		- transmission
+		- webmail
+		- www
+
+-->
+<ruleset name="XMission (partial)">
+
+	<target host="xmission.com" />
+	<target host="*.xmission.com" />
+		<exclusion pattern="^http://(?:anon|maddox|wiki)\." />
+
+
+	<securecookie host="^(?:.*\.)?xmission\.com$" name=".+" />
+
+
+	<rule from="^http://(\w+\.)?xmission\.com/"
+		to="https://$1xmission.com/" />
+
+</ruleset>

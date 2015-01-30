@@ -1,0 +1,12 @@
+<ruleset name="Investors in People">
+
+	<target host="www.investorsinpeople.co.uk"/>
+
+
+	<securecookie host="^www\.investorsinpeople\.co\.uk$" name=".+" />
+
+
+	<rule from="^http://www\.investorsinpeople\.co\.uk/"
+		to="https://www.investorsinpeople.co.uk/"/>
+
+</ruleset>

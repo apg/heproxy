@@ -1,0 +1,58 @@
+<!--
+	Other Broadcom rulesets:
+
+		- Broadcom_Foundation.org.xml
+
+
+	broadcom.jobs2web.com <=> jobs.broadcom.com
+
+
+	Nonfunctional subdomains:
+
+		- investor ¹
+		- websearch ²
+
+	¹ 403; mismatched, CN: *.shareholder.com
+	² Redirects to http; expired, self-signed, CN: foo.ent.google.com
+
+
+	Problematic subdomains:
+
+		- ^ ¹
+		- jobs ²
+
+	¹ Cert only matches www.broadcom.com
+	² Works; mismatched, CN: *.jobs2web.com
+
+
+	Partially covered subdomains:
+
+		- jobs		(→ broadcom.jobs2web.com)
+
+
+	Mixed content:
+
+		- Images on www from jobs *
+
+	* Secured by us
+
+-->
+<ruleset name="Broadcom">
+
+	<target host="broadcom.com" />
+	<target host="*.broadcom.com" />
+
+
+	<securecookie host="^blog\.broadcom\.com$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?broadcom\.com/"
+		to="https://www.broadcom.com/" />
+
+	<rule from="^http://blog\.broadcom\.com/"
+		to="https://blog.broadcom.com/" />
+
+	<rule from="^http://jobs\.broadcom\.com/(?=css/|sites/|view/)"
+		to="https://broadcom.jobs2web.com/" />
+
+</ruleset>

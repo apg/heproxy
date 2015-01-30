@@ -1,0 +1,35 @@
+<!--
+	For problematic rules, see Norman.com-problematic.xml.
+
+
+	Problematic subdomains:
+
+		- blogs *
+
+	* Works; mismatched, CN: blogs.norman.com
+
+
+	Mixed content:
+
+		- Images on blogs from blogs ¹
+
+		- Bug from bstn-14-ma.com *
+
+	¹ Rule disabled by default
+	* Unsecurable <= reset
+
+-->
+<ruleset name="Norman.com (partial)">
+
+	<target host="norman.com" />
+	<target host="www.norman.com" />
+
+
+	<securecookie host="^(?:www\.)?norman\.com$" name=".*" />
+
+
+	<rule from="^http://(www\.)?norman\.com/"
+		to="https://$1norman.com/" />
+
+</ruleset>
+

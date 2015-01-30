@@ -1,0 +1,29 @@
+<!--
+	Mixed content:
+
+		- css on blog from cloud.typography.com *
+
+		- Images on blog from $self *
+
+		- Images on info and www from www *
+
+	* Secured by us
+
+-->
+<ruleset name="Veracode.com">
+
+	<target host="veracode.com" />
+	<target host="*.veracode.com" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^info\.veracode\.com$" name="^BIGipServerabdweb-ssl4_https$" /-->
+
+	<securecookie host="^(?:analysiscenter|info)\.veracode\.com$" name=".+" />
+
+
+	<rule from="^http://((?:analysiscenter|blog|info|www)\.)?veracode\.com/"
+		to="https://$1veracode.com/" />
+
+</ruleset>

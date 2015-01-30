@@ -1,0 +1,50 @@
+<!--
+	Problematic domains:
+
+		- (www.)?arbor.net ¹
+		- atlas.arbornetworks.com ¹
+		- ddos.arbornetworks.com ²
+
+	¹ Redirect differs
+	² Shows www
+
+
+	These altnames don't exist:
+
+		- www.atlas.arbor.net
+		- www.partner.arbornetworks.com
+
+-->
+<ruleset name="Arbor Networks">
+
+	<target host="arbor.net" />
+	<target host="*.arbor.net" />
+	<target host="arbornetworks.com" />
+	<target host="*.arbornetworks.com" />
+
+
+	<!--	301s like so
+					-->
+	<rule from="^http://(?:www\.)?arbor\.net/+"
+		to="https://www.arbornetworks.com/" />
+
+	<rule from="^http://atlas\.arbor\.net/"
+		to="https://atlas.arbor.net/" />
+
+	<!--	Redirect keeps path and args:
+						-->
+	<rule from="^http://atlas\.arbornetworks\.com/+"
+		to="https://atlas.arbor.net/" />
+
+	<!--	Redirect keeps path and args:
+						-->
+	<rule from="^http://ddos\.arbornetworks\.com/+"
+		to="https://www.arbornetworks.com/asert/" />
+
+	<rule from="^http://(www\.)?arbornetworks\.com/"
+		to="https://$1arbornetworks.com/" />
+
+	<rule from="^http://partner\.arbornetworks\.com/"
+		to="https://partner.arbornetworks.com/" />
+
+</ruleset>

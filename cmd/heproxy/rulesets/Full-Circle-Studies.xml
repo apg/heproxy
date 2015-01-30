@@ -1,0 +1,18 @@
+<!--
+	Other Full Circle Studies rulesets:
+
+		- ScorecardResearch.com.xml
+		- SecureStudies.com.xml
+
+-->
+<ruleset name="Full Circle Studies (partial)">
+
+	<target host="fullcirclestudies.com"/>
+	<target host="www.fullcirclestudies.com"/>
+
+	<securecookie host="^(?:.*\.)?fullcirclestudies\.com$" name=".*"/>
+
+	<rule from="^http://(?:www\.)?fullcirclestudies\.com/"
+		to="https://www.fullcirclestudies.com/"/>
+
+</ruleset>

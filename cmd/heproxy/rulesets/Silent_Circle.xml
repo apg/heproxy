@@ -1,0 +1,36 @@
+<!--
+	Other Silent Circle rulesets:
+
+		- Secure_in_the_Circle.xml.
+		- Silentcircle.org.xml
+
+
+	Fully covered silentcircle.com subdomains:
+
+		- (www.)
+		- accounts
+		- blog
+		- mail
+		- stats
+
+
+	Mixed content:
+
+		- css on blog from fonts.googleapis.com *
+
+	* Secured by us
+
+-->
+<ruleset name="Silent Circle.com">
+
+	<target host="silentcircle.com" />
+	<target host="*.silentcircle.com" />
+
+
+	<securecookie host="^accounts\.silentcircle\.com$" name=".+" />
+
+
+	<rule from="^http://(?:((?:accounts|blog|mail|stats)\.)|www\.)?silentcircle\.com/"
+		to="https://$1silentcircle.com/" />
+
+</ruleset>

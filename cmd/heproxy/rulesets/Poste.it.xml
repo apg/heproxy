@@ -1,0 +1,6 @@
+<ruleset name="Poste.it (broken)" default_off="https://www.eff.org/r.1bF6">
+  <target host="poste.it" />
+  <target host="www.poste.it" />
+
+  <rule from="^http://(?:www\.)?poste\.it/" to="https://www.poste.it/" />
+</ruleset>

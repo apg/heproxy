@@ -1,0 +1,30 @@
+<!--
+	Fully covered subdomains:
+
+		- (www.)
+		- forms
+		- www.kb
+		- (www.)securecoding
+
+
+	Observed cookie domains:
+
+		- securecoding *
+		- www.securecoding *
+
+	* Secured by server
+
+-->
+<ruleset name="CERT">
+
+	<target host="cert.org" />
+	<target host="*.cert.org" />
+
+
+	<securecookie host="^(?:.+\.)?cert\.org$" name=".+" />
+
+
+	<rule from="^http://((?:forms|www\.kb|(?:www\.)?securecoding|www)\.)?cert\.org/"
+		to="https://$1cert.org/" />
+
+</ruleset>

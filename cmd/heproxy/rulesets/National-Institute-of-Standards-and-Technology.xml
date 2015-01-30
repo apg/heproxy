@@ -1,0 +1,41 @@
+<!--
+	National Institute of Standards and Technology
+
+	For other US government coverage, see US-government.xml.
+
+
+	Nonfunctional subdomains:
+
+		- ^ ¹
+		- csrc ¹
+		- expect ¹
+		- patapsco	(reset)
+		- physics	(refused)
+		- scap ²
+		- usgcb ²
+		- webbook	(dropped)
+		- www		(403, cert valid)
+
+	¹ 403; mismatched, CN: www.nist.gov)
+	² Shows nvd; mismatched, CN: nvd.nist.gov
+
+
+	Mixed content:
+
+		- Images on web.nvd from nvd *
+
+	* Secured by us
+
+-->
+<ruleset name="NIST.gov (partial)">
+
+	<target host="*.nist.gov" />
+
+
+	<securecookie host="^.*\.nist\.gov$" name=".*" />
+
+
+	<rule from="^http://((?:web\.)?nvd|tsapps)\.nist\.gov/"
+		to="https://$1.nist.gov/" />
+
+</ruleset>

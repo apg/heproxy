@@ -1,0 +1,42 @@
+<!--
+	For other US government coverage,
+	see US-government.xml.
+
+
+	Nonfunctional:
+
+		- xbrl.sec.gov
+
+
+	Problematic domains:
+
+		- sec.gov *
+
+	* Cert only matches www.sec.gov
+
+
+	Fully covered domains:
+
+		- searchwww.sec.gov
+
+
+	Mixed content:
+
+		- css on www.sec.gov from fonts.googleapis.com *
+
+	* Secured by us
+
+-->
+<ruleset name="U.S. Securities and Exchange Commission (partial)">
+
+	<target host="sec.gov" />
+	<target host="*.sec.gov" />
+
+
+	<rule from="^http://(?:www\.)?sec\.gov/"
+		to="https://www.sec.gov/" />
+
+	<rule from="^http://searchwww\.sec\.gov/"
+		to="https://searchwww.sec.gov/" />
+
+</ruleset>

@@ -1,0 +1,37 @@
+<!--
+	Problematic domains:
+
+		- diasporaproject.org		(mismatched, CN: *.heroku.com)
+		- www.diasporaproject.org	(dropped)
+
+-->
+<ruleset name="Diaspora">
+
+	<target host="diasporafoundation.org" />
+	<target host="*.diasporafoundation.org" />
+	<target host="diasporaproject.org" />
+	<target host="www.diasporaproject.org"/>
+	<target host="joindiaspora.com" />
+	<target host="www.joindiaspora.com" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^diasporafoundation\.org$" name="^(_diaspora-project-site_session|locale|request_method)$" /-->
+
+	<securecookie host="^(?:\.|blog\.)?diasporafoundation\.org$" name=".+" />
+	<securecookie host="^(?:www\.)?joindiaspora\.com$" name=".+" />
+
+
+	<rule from="^http://((?:blog|planet|wiki|www)\.)?diasporafoundation\.org/"
+		to="https://$1diasporafoundation.org/" />
+
+	<!--	Server drops path:
+					-->
+	<rule from="^http://(?:www\.)?diasporaproject\.org/.*"
+		to="https://diasporafoundation.org/" />
+
+	<rule from="^http://(www\.)?joindiaspora\.com/"
+		to="https://$1joindiaspora.com/" />
+
+</ruleset>

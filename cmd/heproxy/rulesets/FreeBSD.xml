@@ -1,0 +1,70 @@
+<!--
+	Nonfunctional subdomains:
+
+		- ftp ¹
+		- portsmon ²
+		- tinderbox ²
+
+	¹ Dropped
+	² Refused
+
+
+	Problematic subdomains:
+
+		- bwwwdyn ¹
+		- docs ²
+		- election ¹
+		- p4db ²
+		- portaudit ²
+		- svn ³
+
+	¹ Expired 2013-04-02, self-signed
+	² Mismatched, CN: www.freebsd.org
+	³ Refused
+
+
+	Fully covered subdomains:
+
+		- (www.)?
+		- admbugs
+		- bugs
+		- forums
+		- lists
+		- people
+		- security
+		- svn		(→ svnweb)
+		- svnweb
+		- wiki
+
+
+	These altnames don't exist:
+
+		- www.people.freebsd.org
+		- www.wiki.freebsd.org
+
+
+	Insecure cookies are set for these domains:
+
+		- .bugs.freebsd.org
+
+-->
+<ruleset name="FreeBSD.org (partial)">
+
+	<target host="freebsd.org" />
+	<target host="*.freebsd.org" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^\.bugs\.freebsd\.org$" name="^Bugzilla_login_request_cookie$" /-->
+
+	<securecookie host="^(?:admbug|\.bug|forum)s\.freebsd\.org$" name=".+" />
+
+
+	<rule from="^http://svn\.freebsd\.org/"
+		to="https://svnweb.freebsd.org/" />
+
+	<rule from="^http://((?:admbugs|bugs|forums|lists|people|security|svnweb|wiki|www)\.)?freebsd\.org/"
+		to="https://$1freebsd.org/" />
+
+</ruleset>

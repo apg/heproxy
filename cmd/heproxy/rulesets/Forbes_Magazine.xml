@@ -1,0 +1,29 @@
+ <!--
+	For other Forbes coverage, see Forbes.com.xml.
+
+
+	^: cert only matches www
+
+
+	Fully covered subdomains:
+
+		- (www.)?	(^ → www)
+		- subs
+
+-->
+<ruleset name="Forbes Magazine.com">
+
+	<target host="forbesmagazine.com" />
+	<target host="*.forbesmagazine.com" />
+
+
+	<securecookie host=".+\.forbesmagazine\.com$" name=".+" />
+
+
+	<rule from="^http://subs\.forbesmagazine\.com/"
+		to="https://subs.forbesmagazine.com/" />
+
+	<rule from="^http://(?:www\.)?forbesmagazine\.com/"
+		to="https://www.forbesmagazine.com/" />
+
+</ruleset>

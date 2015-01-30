@@ -1,0 +1,25 @@
+<!--
+	Nonfunctional subdomains:
+
+		- pr2support
+		- support
+
+
+	Problematic subdomains:
+
+		- ^	(cert only matches www)
+
+-->
+<ruleset name="Willow Garage (partial)">
+
+	<target host="willowgarage.com" />
+	<target host="*.willowgarage.com" />
+
+
+	<securecookie host="^(?:www)?\.willowgarage\.com$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?willowgarage\.com/"
+		to="https://www.willowgarage.com/" />
+
+</ruleset>

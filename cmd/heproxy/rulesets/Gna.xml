@@ -1,0 +1,25 @@
+<!--
+	Nonfunctional subdomains:
+
+		- about
+		- download *
+		- svn *
+
+	* Plaintext reply
+
+
+	Fully covered subdomains:
+
+		- mail
+
+-->
+<ruleset name="Gna.org (partial)">
+
+	<target host="gna.org" />
+	<target host="*.gna.org" />
+
+
+	<rule from="^http://(mail\.|www\.)?gna\.org/"
+		to="https://$1gna.org/" />
+
+</ruleset>

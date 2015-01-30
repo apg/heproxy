@@ -1,0 +1,114 @@
+<!--
+	Commit msg: https://trac.torproject.org/projects/tor/ticket/12800
+
+
+	CDN buckets:
+
+		- c558080.r80.cf2.rackcdn.com
+
+			- cdn.ws.citrix.com
+
+
+	Nonfunctional domains:
+
+		- search.citrix.com		(at least some pages redirect to http)
+		- www.citrixonline.com		(redirects to http, valid cert)
+		- images.gotowebinar.com
+		- (www.)joingotomeeting.com
+		- (www.)jointraining.com
+		- (www.)joinwebinar.com
+
+
+	Problematic domains:
+
+		- hdx.citrix.com	(http reply)
+		- cdn.ws.citrix.com	(akamai)
+		- gotowebinar.com	(cert only matches www)
+		- attendee.gotowebinar.com ⁴
+
+	⁴ Insecure renegotiation
+
+
+	Partially covered domains:
+
+		- hdx.citrix.com
+
+
+	Fully covered domains:
+
+		- citrix.com subdomains:
+
+			- blogs
+			- support
+			- cdn.ws	(→ c558080.ssl.cf2.rackcdn.com)
+
+
+	Insecure cookies are set for these domains:
+
+		- attendee.gotowebinar.com
+
+-->
+<ruleset name="Citrix (partial)">
+
+	<target host="citrix.com" />
+	<target host="*.citrix.com" />
+		<exclusion pattern="^http://search\.citrix\.com/(?!favicon\.ico)" />
+	<target host="*.citrixonline.com" />
+	<target host="www.gotoassist.com" />
+	<target host="gotomeeting.com" />
+	<target host="*.gotomeeting.com" />
+	<target host="*.gototraining.com" />
+	<target host="gotowebinar.com" />
+	<target host="*.gotowebinar.com" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^attendee\.gotowebinar\.com$" name="^(ADRUM_\d\d_\d_\d|JSESSIONID)$" /-->
+
+	<securecookie host="^(?:.*\.)?citrix\.com$" name=".+" />
+	<securecookie host="^www[1-4]gotomeeting\.com$" name=".+" />
+	<securecookie host=".*\.gototraining\.com$" name=".+" />
+	<securecookie host="^attendee\.gotowebinar\.com$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?citrix\.com/"
+		to="https://www.citrix.com/" />
+
+	<rule from="^http://(blogs|eu|search|support)\.citrix\.com/"
+		to="https://$1.citrix.com/" />
+
+	<rule from="^http://hdx\.citrix\.com/$"
+		to="https://www.citrix.com/products/xendesktop/features/high-def-experience.html" />
+
+	<rule from="^http://cdn\.ws\.citrix\.com/"
+		to="https://c558080.ssl.cf2.rackcdn.com/" />
+
+	<rule from="^http://(news|support)\.citrixonline\.com/"
+		to="https://$1.citrixonline.com/" />
+
+	<!--	Some pages redirect to http://goto...
+	
+		This'll probably catch more working paths than
+		just handling the paths that we know work over
+		https from both !www & www.
+						-->
+	<rule from="^http://www\.gotoassist\.com/"
+		to="https://www.gotoassist.com/" />
+
+	<rule from="^http://(?:www\.)?gotomeeting\.com/(default|images)/"
+		to="https://www3.gotomeeting.com/$1/" />
+
+	<rule from="^http://www([1-4])\.gotomeeting\.com/"
+		to="https://www$1.gotomeeting.com/" />
+
+	<rule from="^http://student\.gototraining\.com/"
+		to="https://student.gototraining.com/" />
+
+	<rule from="^http://(?:www\.)?gotowebinar\.com/"
+		to="https://www.gotowebinar.com/" />
+
+	<rule from="^http://attendee\.gotowebinar\.com/"
+		to="https://attendee.gotowebinar.com/" />
+
+</ruleset>

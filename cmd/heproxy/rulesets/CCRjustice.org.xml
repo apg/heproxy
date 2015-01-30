@@ -1,0 +1,13 @@
+<ruleset name="Center for Constitutional Rights ">
+
+	<target host="ccrjustice.org" />
+	<target host="*.ccrjustice.org" />
+
+
+	<securecookie host="^(?:w*\.)?ccrjustice\.org$" name=".+" />
+
+
+	<rule from="^http://(www\.)?ccrjustice\.org/"
+		to="https://$1ccrjustice.org/" />
+
+</ruleset>

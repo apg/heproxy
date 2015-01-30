@@ -1,0 +1,30 @@
+<!--
+	Other Beta & Cie rulesets:
+
+		-FMyLife.com.xml
+
+
+	fmylife-betaetcompagnie.netdna-ssl.com
+	betacie.cachefly.net
+
+	Mismatches:
+		cdn.betacie.com		(cert: betaci.net)
+		img.tweetimg.se		(CDNetworks)
+-->
+<ruleset name="Beta &amp; Cie (partial)" platform="mixedcontent">
+
+	<target host="cdn.betacie.com"/>
+	<target host="cdn.betacie.net"/>
+	<target host="viedemerde.fr"/>
+	<target host="*.viedemerde.fr"/>
+
+	<rule from="^http://cdn\.betacie\.(?:com|net)/"
+		to="https://cdn.betacie.net/"/>
+
+	<rule from="^http://cdn\d\.viedemerde\.fr/"
+		to="https://betacie.cachefly.net/"/>
+
+	<rule from="^http://(www\.)?viedemerde\.fr/"
+		to="https://$1viedemerde.fr/"/>
+
+</ruleset>

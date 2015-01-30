@@ -1,0 +1,19 @@
+<!--
+	Nonfunctional domains:
+
+		- (www.)deprexis.eu	(refused)
+
+-->
+<ruleset name="deprexis (partial)">
+
+	<target host="deprexis.com" />
+	<target host="*.deprexis.com" />
+
+
+	<securecookie host="^.*\.deprexis\.com$" name=".+" />
+
+
+	<rule from="^http://(system3\.|www\.)?deprexis\.com/"
+		to="https://$1deprexis.com/" />
+
+</ruleset>

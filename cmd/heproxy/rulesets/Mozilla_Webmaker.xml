@@ -1,0 +1,27 @@
+<!--
+	Mozilla Webmaker
+
+	For other Mozilla coverage, see Mozilla.xml
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- blog
+		- popcorn
+		- welcome
+
+-->
+<ruleset name="Webmaker.org">
+
+	<target host="webmaker.org" />
+	<target host="*.webmaker.org" />
+
+
+	<securecookie host="^(?:.+\.)?webmaker\.org$" name=".+" />
+
+
+	<rule from="^http://((?:blog|popcorn|welcome|www)\.)?webmaker\.org/"
+		to="https://$1webmaker.org/" />
+
+</ruleset>

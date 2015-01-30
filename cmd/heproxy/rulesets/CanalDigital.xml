@@ -1,0 +1,24 @@
+<ruleset name="CanalDigital" platform="mixedcontent">
+	<!--
+	- some mixed content from ads
+	-->
+
+	<target host="canaldigital.dk" />
+	<target host="www.canaldigital.dk" />
+	<target host="erhverv.canaldigital.dk" />
+	<target host="foreninger.canaldigital.dk" />
+	<target host="iptv.canaldigital.dk" />
+
+	<target host="kabel.canaldigital.no" />
+	<target host="parabol.canaldigital.no" />
+	<target host="selger.canaldigital.no" />
+
+	<target host="canaldigital.se" />
+	<target host="www.canaldigital.se" />
+	<target host="kabel.canaldigital.se" />
+
+
+	<rule from="^http://((?:www|erhverv|foreninger|iptv|kabel|parabol|selger)\.)?canaldigital\.(dk|no|se)/"
+		to="https://$1canaldigital.$2/"/>
+
+</ruleset>

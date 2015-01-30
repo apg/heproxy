@@ -1,0 +1,12 @@
+<ruleset name="Asymmetric Publications (broken)" default_off="causes redirect loop on KoL site">
+
+	<target host="kingdomofloathing.com"/>
+	<target host="*.kingdomofloathing.com"/>
+
+	<rule from="^http://kingdomofloathing\.com/"
+		to="https://www.kingdomofloathing.com/"/>
+
+	<rule from="^http://(images|radio|shows|www)?\.kingdomofloathing\.com/"
+		to="https://$1.kingdomofloathing.com/"/>
+
+</ruleset>

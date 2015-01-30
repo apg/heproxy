@@ -1,0 +1,321 @@
+<!--
+	See Oracle-mismatches.xml for problematic rules.
+
+
+	Other Oracle rulesets:
+
+		- Atgsvcs.com.xml
+		- ATG_Web_Commerce.xml
+		- Compendium.com.xml
+		- Eloqua.xml
+		- Estara.com.xml
+		- Java.net.xml
+		- JCP.org.xml
+		- Kenai.com.xml
+		- Linksys.xml
+		- MySQL.xml
+		- NetBeans.zml
+		- Responsys.com.xml
+		- Responsys.xml
+		- RightNow.xml
+		- VirtualBox.xml
+
+
+	CDN buckets:
+
+		- oracle.112.2o7.net
+		- sun.edgeboss.net
+		- pressroom.oracle.com.edgekey.net
+		- www.oracleimg.com.edgekey.net
+		- docs.oracle.com.edgesuite.net
+
+		- oraclejapan.presscentre.com
+
+			- japanmediacentre
+
+
+	Nonfunctional subdomains:
+
+		- isdportal ¹
+		- jdevadf ²
+		- oukc ¹
+		- pressroom ³
+		- tahiti ¹
+
+	¹ Refused
+	² Dropped
+	³ 503
+
+
+	Problematic domains:
+
+		- oracle.com subdomains:
+
+			- ^ ¹
+			- crmondemand ²
+			- docs ³
+			- download ⁴
+			- japanmediacentre ⁵
+
+		- oracleimg.com ²
+
+	¹ Refused
+	² Redirects to http; mismatched, CN: java.sun.com
+	³ Insecure renegotiation
+	⁴ Mismatched
+	⁵ Mismatched, CN: *.presscentre.com
+
+
+	Partially covered domains:
+
+		- (www.)oracle.com ¹
+		- (www.)oracleimg.com ¹
+
+	¹ ^ → www, some paths redirect to http
+	² → akamai, avoiding user-visible paths, rest handled in Oracle-mismatches.xml
+
+
+	There are probably some data identical across shop and www that could be grabbed for www.
+
+
+	Fully covered domains:
+
+		- oracle.com subdomains:
+
+			- academy
+			- acsportal
+			- advancedsupport
+			- amr
+			- amr-stage
+			- apex
+			- apexea
+			- asktom
+			- bi-fusioncrm
+			- blogs
+			- blogs-stage
+			- campus
+			- cloud subdomains:
+
+				- ^
+
+				- *.em1:
+
+					- console
+					- javaservices
+					- login
+					- myservices
+
+				- *.us0:
+
+					- data
+					- loginpre
+					- messaging
+					- storage
+
+				- *.us1
+
+					- console
+					- javaservices
+					- login
+					- myservices
+
+			- communities
+			- competencycentre
+			- conference
+			- crm-fusioncrm
+			- crmondemand		(→ www)
+			- digitalmedia
+			- dne
+			- docs
+			- download
+			- edelivery
+			- edelivery-hqdc-test
+			- education
+			- education-stage
+			- emeajobs
+			- emeapressoffice
+			- etrm
+			- fin-fusioncrm
+
+			- forums subdomains:
+
+				- ^
+				- cn
+				- kr
+
+			- forums-stage subdomains:
+
+				- ^
+				- cn
+				- kr
+
+			- fusioncrm
+			- fusionhelp
+			- fusionhelp-stage
+			- gcmprm
+			- hcm-fusioncrm
+			- hs-ws1
+			- iacademy
+			- ic-fusioncrm
+			- ilearning
+			- ilearningcontent
+			- irecruitment
+			- itsp
+			- itsp-stage
+			- linux
+			- login
+			- login-stage
+			- m
+			- medianetwork
+			- my
+			- myprofile
+			- myprofile-mktas
+			- oai
+			- oss
+			- otn
+			- partners
+			- plmap
+			- prc-fusioncrm
+			- prj-fusioncrm
+			- public-yum
+			- scm-fusioncrm
+			- search
+			- shop
+			- solutions
+			- stbeehive
+			- strtc
+			- suppliers
+			- support
+			- supporthtml
+			- updates
+			- wfs
+			- wikis
+			- wikis-stage
+			- workforce
+			- www-portal-stage
+			- www-stage
+
+		- oracleoutsourcing.com subdomains:
+
+			- bi-*
+			- crm-*
+			- fin-*
+			- fs-*
+			- hcm-*
+			- scm-*
+			- ic-*
+			- prc-*
+			- prj-*
+
+
+	Observed cookie subdomains:
+
+		- blogs
+
+		- cloud subdomains:
+
+			- ^
+
+			- em1 subdomains:
+
+				- console
+				- javaservices
+				- login
+				- myservices
+
+			- data.us0
+			- loginpre.us0
+
+			- us1 subdomains:
+
+				- console
+				- login
+				- myservices
+
+		- competencycenter
+		- crm-fusioncrm
+		- .edelivery
+		- education
+		- fin-fusioncrm
+		- fusioncrm
+		- hcm-fusioncrm
+		- ic-fusioncrm
+		- login
+		- medianetwork
+		- scm-fusioncrm
+		- shop
+		- solutions
+		- wikis
+		- www
+
+
+	Mixed content:
+
+		- Script on medianetwork from www.oracleimg.com ¹
+
+		- Images, on:
+
+			- medianetwork from sun.edgeboss.net
+			- medianetwork from www.oracleimg.com ¹
+			- medianetwork from www.oracleimg.com ²
+
+		- Web bugs, on:
+
+			- events from dnn506yrbagrg.cloudfront.net ¹
+			- events from consent.truste.com ¹
+			- medianetwork from www.oracleimg.com ¹
+
+	¹ Secured by us
+	² Unsecurable, doesn't trip MCB
+
+-->
+<ruleset name="Oracle (partial)">
+
+	<target host="oracle.com" />
+	<target host="*.oracle.com" />
+		<!--exclusion pattern="^http://(isdportal|jdevadf|oukc|pressroom|tahiti)\.oracle\.com/" /-->
+		<!--
+			Very stingy https support
+			most paths redirect to http
+							-->
+		<exclusion pattern="^http://www\.oracle(?:img)?\.com/(?!(?:\w+/)?assets/|\w+/[^/]+\.(?:css|gif|jpg|js|png)$|javaone(?:$|[?/]))"/>
+	<target host="oracleimg.com" />
+	<target host="www.oracleimg.com" />
+	<target host="*.oracleoutsourcing.com" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^\.oracle\.com$" name="^(Order_MarketingCampaignSuccess|Order_MarketingTrigger|p_cur_URL|p_lang|p_mcc|p_org_id)$" /-->
+	<!--securecookie host="^blogs\.oracle\.com$" name="^BIGipServerblogs_prod_pool$" /-->
+	<!--securecookie host="^education\.oracle\.com$" name="^BIGipServerfapap-education_http_pool$" /-->
+
+	<securecookie host="^(?:\w+|\.edelivery)\.oracle\.com$" name=".+" />
+	<!--
+		Could we secure any of these safely?
+							-->
+	<!--securecookie host="^\.oracle\.com$" name="^(ORA_FND_SESSION_CRMAP\.US\.ORACLE\.COM|ORA_FUSION_PREFS|s_eVar21)$" /-->
+	<!--
+		Tracking cookies
+					-->
+	<securecookie host="^\.oracle\.com$" name="^(?:Order_Marketing(?:CampaignSuccess|Trigger)|gpw_e24|s_(?:cc|nr|sq))$" />
+
+
+	<rule from="^http://(?:www\.)?oracle(img)?\.com/us/(?=[^/]+\.(?:css|gif|jpg|js|png)$)"
+		to="https://www.oracle$1.com/us/assets/" />
+
+	<rule from="^http://(?:www\.)?oracle(img)?\.com/"
+		to="https://www.oracle$1.com/" />
+
+	<rule from="^http://(i?academy|acsportal|advancedsupport|amr|amr-stage|apex|apexea|asktom|blogs(?:-stage)?|campus|cloud|\w+\.(?:em1|us0|us1)\.cloud|communities|competencycentre|conference|digitalmedia|dne|docs|edelivery(?:-hqdc-test)?|education(?:-stage)?|emeajobs|emeapressoffice|etrm|(?:cn\.|kr\.)?forums(?:-stage)?|(?:bi-|crm-|fin-|[hs]cm-|ic-|pr[cj]-)?fusioncrm|fusionhelp(?:-stage)?|gcmprm|hs-ws1|ilearning(?:content)?|irecruitment|itsp|itsp-stage|linux|login(?:-stage)?|medianetwork|my?|myprofile(?:-mktas)?|oai|oss|otn|partners|plmap|public-yum|search|shop|solutions|stbeehive|strtc|suppliers|support(?:html)?|updates|wfs|wikis(?:-stage)?|workforce|www(?:-portal)?-stage)\.oracle\.com/"
+		to="https://$1.oracle.com/" />
+
+	<!--	Redirect keeps path:
+					-->
+	<rule from="^http://crmondemand\.oracle\.com/"
+		to="https://www.oracle.com/us/products/applications/crmondemand/index.html" />
+
+	<rule from="^http://(bi|crm|fin|fs|[hs]cm|ic|pr[cj])-(\w+)\.oracleoutsourcing\.com/"
+		to="https://$1-$2.oracleoutsourcing.com/" />
+
+</ruleset>

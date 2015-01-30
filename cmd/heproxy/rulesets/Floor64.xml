@@ -1,0 +1,21 @@
+<!--
+	Other Floor64 rulesets:
+
+		- Techdirt.xml
+
+-->
+<ruleset name="Floor64 (partial)">
+
+	<target host="insightcommunity.com" />
+	<target host="www.insightcommunity.com" />
+
+    <exclusion pattern="^http://rtb.techdirt.com/" />
+
+
+	<rule from="^http://(www\.)?insightcommunity\.com/"
+		to="https://$1insightcommunity.com/" />
+
+    <rule from="^http://([^@:/]+\.)?techdirt\.com/"
+		to="https://$1techdirt.com/"/>
+
+</ruleset>

@@ -1,0 +1,15 @@
+<!--
+	Other Society for Science rulesets:
+
+		- Science_News.org.xml
+
+-->
+<ruleset name="SocietyForScience.org">
+  <target host="*.societyforscience.org" />
+  <target host="societyforscience.org" />
+
+  <rule from="^http://((?:member|student|www)\.)?societyforscience\.org/"
+      to="https://$1societyforscience.org/" />
+
+  <securecookie host="^www\.societyforscience\.org" name=".*" />
+</ruleset>

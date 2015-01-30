@@ -1,0 +1,26 @@
+<!--
+	NOTE: In its current form and with the current site
+	configuration, this rule protects login passwords
+	but prevents the user from reading other users' journals!
+
+
+	Nonfunctional subdomains:
+
+		- dw-news *
+
+	* Redirects to http, valid cert
+
+-->
+<ruleset name="Dreamwidth" default_off="breaks for non-logged-in users">
+
+	<target host="dreamwidth.org" />
+	<target host="*.dreamwidth.org" />
+
+
+	<securecookie host="^\.dreamwidth\.org$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?dreamwidth\.org/"
+		to="https://www.dreamwidth.org/" />
+
+</ruleset>

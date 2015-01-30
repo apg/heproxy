@@ -1,0 +1,44 @@
+<!--
+	Nonfunctional domains:
+
+		- (www.)sciencecareers.org	(times out)
+		- images.sciencecareers.org	(ditto)
+		- jobs.sciencecareers.org	(404, valid cert)
+
+		- sciencemag.org subdomains:
+
+			- blogs			(times out)
+			- comments		(times out)
+			- news			(ditto)
+			- sciencecareers	(ditto)
+			- stke
+			- stm
+			- talk			(times out)
+			- video			(ditto)
+
+-->
+<ruleset name="Sciencemag.org (partial)" platform="mixedcontent">
+
+	<target host="community.sciencecareers.org" />
+	<target host="sciencemag.org" />
+	<target host="*.sciencemag.org" />
+
+
+	<securecookie host="^\.sciencemag\.org$" name="^OAX$" />
+	<securecookie host="^.+\.sciencemag\.org$" name=".*" />
+
+
+	<rule from="^http://community\.sciencecareers\.org/"
+		to="https://community.sciencecareers.org/" />
+
+	<!--	- !www doesn't work over https
+		- !www redirects to www over http
+					-->
+	<rule from="^http://(?:www\.)?sciencemag\.org/"
+		to="https://www.sciencemag.org/" />
+
+	<rule from="^http://(oascentral|scjobs)\.sciencemag\.org/"
+		to="https://$1.sciencemag.org/" />
+
+</ruleset>
+

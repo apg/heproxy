@@ -1,0 +1,20 @@
+<!--
+	^: shows xelerance.com; mismatched, CN: *.xelerance.com
+
+-->
+<ruleset name="Openswan">
+
+	<target host="openswan.org" />
+	<target host="*.openswan.org" />
+
+
+	<securecookie host="^www\.openswan\.org$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?openswan\.org/"
+		to="https://www.openswan.org/" />
+
+	<rule from="^http://(downloads|lists)\.openswan\.org/"
+		to="https://$1.openswan.org/" />
+
+</ruleset>

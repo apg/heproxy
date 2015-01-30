@@ -1,0 +1,25 @@
+<!--
+	For other Google coverage, see GoogleServices.xml.
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- developer
+		- market
+		- source
+
+-->
+<ruleset name="Android.com">
+
+	<target host="android.com" />
+	<target host="*.android.com" />
+
+
+	<securecookie host=".+\.android\.com$" name=".+" />
+
+
+	<rule from="^http://((?:developer|market|source)\.)?android\.com/"
+		to="https://$1android.com/" />
+
+</ruleset>

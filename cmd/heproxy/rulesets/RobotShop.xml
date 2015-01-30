@@ -1,0 +1,13 @@
+<ruleset name="RobotShop (partial)">
+
+	<target host="robotshop.com" />
+	<target host="*.robotshop.com" />
+
+
+	<securecookie host="^(?:.*\.)?robotshop\.com$" name=".*" />
+
+
+	<rule from="^http://(secure\.|www\.)?robotshop\.com/"
+		to="https://$1robotshop.com/" />
+
+</ruleset>

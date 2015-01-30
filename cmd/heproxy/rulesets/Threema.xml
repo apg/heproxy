@@ -1,0 +1,5 @@
+<ruleset name="Threema">
+<target host="*.threema.ch" />
+<target host="threema.ch" />
+<rule from="^http://(shop\.|www\.)?threema\.ch/" to="https://$1threema.ch/"/>
+</ruleset>

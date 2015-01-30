@@ -1,0 +1,22 @@
+<!--
+	Other 10gen rulesets:
+
+		- MongoDB.com.xml
+		- MongoDB.org.xml
+
+
+	Nonfunctional subdomains:
+
+		- blog
+
+-->
+<ruleset name="10gen">
+
+	<target host="10gen.com" />
+	<target host="*.10gen.com" />
+
+
+	<rule from="^http://(mms\.|www\.)?10gen\.com/"
+		to="https://$110gen.com/" />
+
+</ruleset>

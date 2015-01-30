@@ -1,0 +1,22 @@
+<!--
+	Other Springshare rulesets:
+
+		- LibAnswers.xml
+		- LibGuides.xml
+
+
+	Nonfunctional subdomains:
+
+		- lgproc.aws.springshare.com
+
+-->
+<ruleset name="Springshare">
+
+	<target host="springshare.com" />
+	<target host="www.springshare.com" />
+
+
+	<rule from="^http://(www\.)?springshare\.com/"
+		to="https://$1springshare.com/" />
+
+</ruleset>

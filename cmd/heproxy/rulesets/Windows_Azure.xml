@@ -1,0 +1,47 @@
+<!--
+	For other Microsoft coverage, see Microsoft.xml.
+
+
+	CDN buckets:
+
+		- az83882.vo.msecnd.net
+
+
+	Problematic subdomains:
+
+		- ^	(times out)
+
+
+	Fully covered subdomains:
+
+		- (www.)	(^ → www)
+		- account
+		- manage
+		- www.remoteapp
+
+
+	Insecure cookies are set for these domains:
+
+		- www.remoteapp
+
+-->
+<ruleset name="Windows Azure">
+
+	<target host="windowsazure.com" />
+	<target host="*.windowsazure.com" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^www\.remoteapp\.windowsazure\.com$" name="^ActivityId$" /-->
+
+	<securecookie host="^(?:www\.remoteapp)?\.windowsazure\.com$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?windowsazure\.com/"
+		to="https://www.windowsazure.com/" />
+
+	<rule from="^http://(account|manage|www\.remoteapp)\.windowsazure\.com/"
+		to="https://$1.windowsazure.com/" />
+
+</ruleset>

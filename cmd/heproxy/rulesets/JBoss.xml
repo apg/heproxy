@@ -1,0 +1,53 @@
+<!--
+	For other Red Hat coverage, see RedHat.xml.
+
+
+	Fully covered domains:
+
+		- *.jboss.org:
+
+			- (www.)
+			- community
+			- design
+			- developer
+			- docs
+			- hudson
+			- issues
+			- jboss
+			- jira
+			- lists
+			- sso
+			- static
+			- wiki
+
+
+	Insecure cookies are set for these domains:
+
+		- developer.jboss.org
+		- issues.jboss.org
+
+-->
+<ruleset name="JBoss">
+
+	<target host="jboss.com" />
+	<target host="*.jboss.com" />
+		<!--
+			downloads 404s.
+					-->
+		<exclusion pattern="^http://downloads?\.jboss\.(?:com|org)/" />
+	<target host="jboss.org" />
+	<target host="*.jboss.org" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^issues\.jboss\.org$" name="^(JSESSIONID|atlassian\.xsrf\.token)$" /-->
+	<!--securecookie host="^developer\.jboss\.org$" name="(JSESSIONID|jive\.security\.context)$" /-->
+
+	<securecookie host="^(?:.*\.)?jboss\.(?:com|org)$" name=".+" />
+
+
+	<rule from="^http://([^/@:]+\.)?jboss\.(com|org)/"
+		to="https://$1jboss.$2/" />
+
+</ruleset>

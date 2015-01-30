@@ -1,0 +1,40 @@
+<!--
+	This rule was automatically generated based on an
+	HSTS preload rule in the Chromium browser.  See
+	https://src.chromium.org/viewvc/chrome/trunk/src/net/base/transport_security_state.cc
+	for the list of preloads.  Sites are added to the Chromium
+	HSTS preload list on request from their administrators, so
+	HTTPS should work properly everywhere on this site.
+
+
+	Fully covered subdomains:
+
+		- checkout
+		- dashboard
+		- q
+		- status
+		- support
+
+-->
+<ruleset name="Stripe.com" platform="mixedcontent">
+
+	<target host="stripe.com" />
+	<target host="*.stripe.com" />
+
+
+	<!--	Secured by server:
+					-->
+	<!--securecookie host="^\.stripe\.com$" name="^(__stripe_orig_props|stripe\.csrf)$" /-->
+	<!--securecookie host="^support\.stripe\.com$" name="^_support_session$" /-->
+	<!--
+		Not secured by server:
+					-->
+	<!--securecookie host="^\.stripe\.com$" name="^country$" /-->
+
+	<securecookie host="^(?:(?:answers|www)?\.)?stripe\.com$" name=".+" />
+
+
+	<rule from="^http://((?:answers|api|checkout|dashboard|js|manage|q|status|support|www)\.)?stripe\.com/"
+		to="https://$1stripe.com/" />
+
+</ruleset>

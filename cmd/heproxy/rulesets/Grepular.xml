@@ -1,0 +1,24 @@
+<!--
+	Problematic subdomains:
+
+		- secure *
+
+	* Mismatched, CN: www.grepular.com
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- secure	(→ ^)
+
+-->
+<ruleset name="Grepular">
+
+	<target host="grepular.com" />
+	<target host="*.grepular.com" />
+
+
+	<rule from="^http://(?:secure\.|(www\.))?grepular\.com/"
+		to="https://$1grepular.com/" />
+
+</ruleset>

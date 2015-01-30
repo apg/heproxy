@@ -1,0 +1,73 @@
+<!--
+	For rules causing false/broken MCB, see LiveInternet-falsemixed.xml.
+
+
+	Other LiveInternet rulesets:
+
+		- Yadro.ru.xml
+
+
+	Nonfunctional domains:
+
+		- captcha.li.ru *
+		- wiki.liveinternet.ru *
+
+	* Dropped
+
+
+	Problematic domains:
+
+		- (www.)li.ru *
+		- i.li.ru		(refused)
+		- liveinternet.ru *
+
+	* Works; mismatched, CN: www.liveinternet.ru
+
+
+	Fully covered domains:
+
+		- g.liveinternet.ru
+
+
+	Mixed content:
+
+		- Scripts, on:
+
+			- www.liveinternet.ru from www.liveinternet.ru *
+			- www.liveinternet.ru from i.li.ru *
+
+		- css, on:
+
+			- www.liveinternet.ru from www.liveinternet.ru *
+			- www.liveinternet.ru from i.li.ru *
+
+		- Images, on:
+
+			- g.liveinternet.ru from captcha.li.ru
+
+		- Web bugs, on:
+
+			- www.liveinternet.ru from www.internalinspector.com **
+			- www.liveinternet.ru from www.tns-counter.ru *
+			- www.liveinternet.ru from slinks.yadro.ru **
+
+	* Secured by us
+	** Unsecurable, but who cares
+
+
+	NB: We secure all resources, and thus
+	-falsemixed should be merged for Ffx 24.
+
+-->
+<ruleset name="LiveInternet (partial)">
+
+	<target host="g.liveinternet.ru" />
+
+
+	<securecookie host="^g\.liveinternet\.ru$" name=".+" />
+
+
+	<rule from="^http://g\.liveinternet\.ru/"
+		to="https://g.liveinternet.ru/" />
+
+</ruleset>

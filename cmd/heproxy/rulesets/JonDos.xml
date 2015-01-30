@@ -1,0 +1,29 @@
+<!--
+	Other JonDos rulesets:
+
+		- IP_check.xml
+
+-->
+<ruleset name="JonDos">
+
+	<target host="anonymous-proxy-servers.net"/>
+	<target host="*.anonymous-proxy-servers.net"/>
+	<target host="anonym-surfen.de"/>
+	<target host="*.anonym-surfen.de"/>
+	<target host="jondos.org"/>
+	<target host="www.jondos.org"/>
+
+	<securecookie host="^(?:.*\.)?anonym(?:ous-proxy-servers\.net|-surfen\.de)$" name=".*"/>
+
+	<!--	alias for anonymous-proxy-servers.net, but !shop & !storage/	-->
+	<rule from="^http://(www\.)?anonym-surfen\.de/"
+		to="https://$1anonym-surfen.de/"/>
+
+	<!--	encountered:	shop, storage, www	-->
+	<rule from="^http://(\w+\.)?anonymous-proxy-servers\.net/"
+		to="https://$1anonymous-proxy-servers.net/"/>
+
+	<rule from="^http://(www\.)?jondos\.org/"
+		to="https://$1jondos.org/"/>
+
+</ruleset>

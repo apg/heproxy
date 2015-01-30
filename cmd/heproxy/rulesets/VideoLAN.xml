@@ -1,0 +1,77 @@
+<!--
+	Nonfunctional subdomains:
+
+		- albiero *
+		- download **
+		- ganesh **
+		- nightlies *
+		- people *
+		- planet ³
+		- rsync **
+		- sirius ***
+		- stats **
+		- update **
+		- www2 ***
+
+	* Refused
+	** Shows www
+	³ Redirects to http
+	*** Images 404
+
+
+	Problematic subdomains:
+
+		- addons	(mismatched, CN: *.opendesktop.org)
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- forum
+		- get
+		- git
+		- images
+		- images1
+		- mailman
+		- munin
+		- trac
+		- wiki
+		- www1
+
+
+	Wildcard cookies:
+
+		- .forum.videolan.org
+
+
+	Mixed content:
+
+		- Images on (www.) from images *
+
+	* Secured by us
+
+-->
+<ruleset name="VideoLAN (partial)">
+
+	<target host="videolan.org" />
+	<target host="*.videolan.org" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="\.forum\.videolan\.org$" name="^phpbb3_\w+_(k|sid|u)$" /-->
+	<!--securecookie host="^wiki\.videolan\.org$" name="^VideoLANwikidb_session$" /-->
+
+	<securecookie host="(?:.*\.)?videolan\.org$" name=".+" />
+
+
+	<rule from="^http://((?:forum|get|git|images1?|mailman|munin|trac|wiki|www1?)\.)?videolan\.org/"
+		to="https://$1videolan.org/" />
+
+	<!--	- Show www's data over https
+		- Redirect like so over http
+						-->
+	<rule from="^http://(?:ganesh|rsync|stats)\.videolan\.org/$"
+		to="https://www.videolan.org/" />
+
+</ruleset>

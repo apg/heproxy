@@ -1,0 +1,9 @@
+<ruleset name="The Book Depository" platform="mixedcontent">
+  <target host="bookdepository.co.uk" />
+  <target host="*.bookdepository.co.uk" />
+  <target host="bookdepository.com" />
+  <target host="*.bookdepository.com" />
+
+  <rule from="^http://bookdepository\.(co\.uk|com)/" to="https://bookdepository.$1/" />
+  <rule from="^http://(cache0|cache1|cache2|cache3|images|www)\.bookdepository\.(co\.uk|com)/" to="https://$1.bookdepository.$2/" />
+</ruleset>

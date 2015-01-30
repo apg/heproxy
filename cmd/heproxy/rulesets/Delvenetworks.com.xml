@@ -1,0 +1,21 @@
+<!--
+	For other Limelight Networks coverage, see Limelight-Networks.xml.
+
+
+	CDN buckets:
+
+		- delve-public-read.s3.amazonaws.com | delve.hs.llnwd.net
+
+			- img.delvenetworks.com
+
+-->
+<ruleset name="Delvenetworks">
+
+	<target host="img.delvenetworks.com" />
+	<target host="assets.delvenetworks.com" />
+	<target host="s.delvenetworks.com" />
+
+	<rule from="^http://(img|assets|s)\.delvenetworks\.com/"
+		to="https://$1.delvenetworks.com/" />
+
+</ruleset>

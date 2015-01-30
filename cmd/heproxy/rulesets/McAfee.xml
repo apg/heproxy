@@ -1,0 +1,54 @@
+<!--
+	For other Intel coverage, see Intel.xml.
+
+
+	Av vendor. promos.mcafee.com lacks https
+
+-->
+<ruleset name="McAfee (buggy)" default_off="Rediects to http, buggy">
+
+	<target host="mcafee.com" />
+	<target host="*.mcafee.com" />
+		<!--
+			This redirects to http.  As in the
+			case below, after we give up (good),
+			we don't try again when it redirects
+			to something that we can secure (bad).
+
+			Bug: https://trac.torproject.org/projects/tor/ticket/5686
+				-->
+		<exclusion pattern="^http://(?:www\.)?mcafee\.com/error-pages/404\.aspx" />
+		<!--
+			At least the homepage redirects to http.
+								-->
+		<exclusion pattern="^http://service\.mcafee\.com/(?!css/|images/|js/|locale/|(?:Script|Web)Resource\.axd)" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^kc\.mcafee\.com$" name="^(JSESSIONID|OAMAuthnCookie_kc\.mcafee\.com:443|ROUTEID)$" /-->
+
+	<!--	If we fetch a cookie over http,
+		we don't secure it, so there's
+		no need to play acrobatics in
+		order to avoid doing so.
+			-->
+	<securecookie host="^(?:.*\.)?mcafee\.com$" name=".+" />
+
+
+	<!--	/$ redirects to http.  We give
+		up, let it redirect to us/, and
+		don't rewrite to https once there.
+
+		Bug: https://trac.torproject.org/projects/tor/ticket/5686
+			-->
+	<rule from="^http://(?:www\.)?mcafee\.com/$"
+		to="https://www.mcafee.com/us/" />
+
+	<rule from="^http://(?:www\.)?mcafee\.com/"
+		to="https://www.mcafee.com/" />
+
+	<rule from="^http://(beta|blogs|community|home|(?:secure)?images|kc|service|shop|us)\.mcafee\.com/"
+		to="https://$1.mcafee.com/" />
+
+</ruleset>

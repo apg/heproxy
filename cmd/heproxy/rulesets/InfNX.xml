@@ -1,0 +1,19 @@
+<!--
+	Other InfNX rulesets:
+
+		- FixUnix.xml
+
+
+	In buckets somewhere:
+		- [ci].dbaspot.com
+		- c.objectmix.com
+-->
+<ruleset name="InfNX">
+
+	<!--	infnx.com/web-portfolio	-->
+	<target host="*.infnx.com"/>
+
+	<rule from="^http://(idn|static)\.infnx\.com/"
+		to="https://s3.amazonaws.com/$1.infnx.com/"/>
+
+</ruleset>

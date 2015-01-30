@@ -1,0 +1,29 @@
+<!--
+	dsimg is hosted by EdgeCast.  ToDo: Find bucket
+
+-->
+<ruleset name="Discogs (partial)" platform="mixedcontent">
+
+	<target host="discogs.com" />
+	<target host="www.discogs.com" />
+	<target host="images.discogsmp3.com" />
+	<target host="s.dsimg.com" />
+	<target host="s.pixogs.com" />
+
+
+	<!--	- !www 404s over https
+		- !www redirects to www over http
+					-->
+	<rule from="^http://(?:www\.)?discogs\.com/((?:css|developers|users|images?)/|help$)"
+		to="https://www.discogs.com/$1" />
+
+	<rule from="^http://images\.discogsmp3\.com/"
+		to="https://images.juno.co.uk/" />
+
+	<rule from="^http://s\.dsimg\.com/"
+		to="https://www.discogs.com/" />
+
+	<rule from="^http://s\.pixogs\.com/"
+		to="https://s.pixogs.com/" />
+
+</ruleset>

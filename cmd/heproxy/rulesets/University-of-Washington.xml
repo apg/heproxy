@@ -1,0 +1,80 @@
+<!--
+	For problematic rules, see University-of-Washington-self-signed.xml.
+
+
+	Nonfunctional:
+
+		- (www.)uwb.edu			(reset)
+		- psc.apl.washington.edu
+		- bio.cs.washington.edu 	("Unimplemented")
+		- oneswarm.cs.washington.edu
+		- uwmedicine.washington.edu	(reset)
+
+
+	Problematic domains:
+
+		- cs.washington.edu *
+		- lib.washington.edu *
+
+	* Cert only matches *.foo
+
+
+	Partially covered subdomains:
+
+		- digital.lib	(findingaids/view 404s)
+
+
+	Fully covered subdomains:
+
+		- (www.)cs	(^ → www)
+		- homes.cs
+		- idl.cs
+		- norfolk.cs
+		- sampa.cs
+		- sharemenot.cs
+		- www.cs
+
+		- dub
+
+-->
+<ruleset name="University of Washington (partial)">
+
+	<target host="uw.edu" />
+	<!--	* for cross-subdomain cookie.	-->
+	<target host="*.tacoma.uw.edu" />
+	<target host="*.uw.edu" />
+	<target host="washington.edu" />
+	<target host="cloud.ihme.washington.edu" />
+	<target host="www.lib.washington.edu" />
+	<target host="*.washington.edu" />
+		<!--
+			News pages redirect to http:
+						-->
+		<exclusion pattern="^http://(?:www\.)?washington\.edu/news/(?:\d{4}/(?:\d\d/(?:\d\d/(?:[\w-]+/)?)?)?)?(?:\?.*)?$" />
+		<!--
+			404:
+				-->
+		<exclusion pattern="^http://digital\.lib\.washington\.edu/findingaids/" />
+
+
+	<securecookie host="^cloud\.ihme\.washington\.edu$" name=".*" />
+	<securecookie host="^\.tacoma\.uw\.edu$" name=".*" />
+
+
+	<rule from="^http://(blogs\.|www\.(?:tacoma\.)?)?uw\.edu/"
+		to="https://$1uw.edu/" />
+
+	<!--	^tacoma: Cert only valid for www.tacoma.uw.edu.	-->
+	<rule from="^http://tacoma\.uw\.edu/"
+		to="https://www.tacoma.uw.edu/" />
+
+	<rule from="^http://((?:courses|(?:homes|idl|norfolk|sampa|sharemenot)\.cs|depts|dub|faculty|cloud\.ihme|digital\.lib|myuw|staff|www)\.)?washington\.edu/"
+		to="https://$1washington.edu/" />
+
+	<!--	Domains for which both !www and www exist,
+		but only www works without caveat:
+							-->
+	<rule from="^http://(?:www\.)?(cs|lib)\.washington\.edu/"
+		to="https://www.$1.washington.edu/" />
+
+</ruleset>

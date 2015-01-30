@@ -1,0 +1,34 @@
+<!--
+	See Tucows-mismatches.xml for problematic rules.
+
+
+	Other Tucows rulesets:
+
+		- Hover.com.xml
+		- OpenSRS.com.xml
+		- Ting.com.xml
+
+
+	Nonfunctional:
+
+		- (www.)accountservergroup.com	(ssl_error_rx_record_too_long)
+		- (www.)tucows.com ²
+		- www.tucowsdomains.com		(cert: opensrs.com
+
+	² Refused
+
+-->
+<ruleset name="Tucows (partial)">
+
+	<target host="contact-privacy.com" />
+	<target host="support.ispbilling.com" />
+
+
+	<!-- actually redirects as so -->
+	<rule from="^http://(?:www\.)?contactprivacy\.com/"
+		to="https://rr-n1-tor.opensrs.net/wp_mailer/" />
+
+	<rule from="^http://support\.ispbilling\.com/"
+		to="https://support.ispbilling.com/" />
+
+</ruleset>

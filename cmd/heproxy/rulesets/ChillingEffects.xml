@@ -1,0 +1,10 @@
+<ruleset name="ChillingEffects">
+
+	<target host="chillingeffects.org" />
+	<target host="*.chillingeffects.org" />
+
+
+	<rule from="^http://(images\.|www\.)?chillingeffects\.org/"
+		to="https://$1chillingeffects.org/" />
+
+</ruleset>

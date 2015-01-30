@@ -1,0 +1,38 @@
+<!--
+	See XFCE.org-self-signed.xml for problematic rules.
+
+
+	Nonfunctional subdomains:
+
+		- ^ *
+		- archive(.be) *
+		- blog *
+		- cdn *
+		- docs *
+		- git *
+		- goodies *
+		- squeeze *
+		- users *
+
+	* 404
+
+
+	Problematic subdomains:
+
+		- tibeti *
+
+	* Self-signed
+
+-->
+<ruleset name="XFCE.org (partial)">
+
+	<target host="*.xfce.org" />
+
+
+	<securecookie host="^(?:.*\.)xfce\.org$" name=".+" />
+
+
+	<rule from="^http://(bugzilla|forum|translations|wiki)\.xfce\.org/"
+ 	        to="https://$1.xfce.org/" />
+
+</ruleset>

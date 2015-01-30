@@ -1,0 +1,13 @@
+<ruleset name="Securosis">
+
+	<target host="securosis.com" />
+	<target host="*.securosis.com" />
+
+
+	<securecookie host="^(?:www)?\.securosis\.com$" name=".+" />
+
+
+	<rule from="^http://(www\.)?securosis\.com/"
+		to="https://$1securosis.com/" />
+
+</ruleset>

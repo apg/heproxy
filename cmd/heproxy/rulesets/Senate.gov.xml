@@ -1,0 +1,31 @@
+<!--
+	For other US government coverage, see US-government.xml.
+
+-->
+<ruleset name="Senate.gov">
+
+	<target host="senate.gov" />
+	<target host="*.senate.gov" />
+	<target host="www.*.senate.gov" />
+	     <!-- The rules subdomain is all 403 via TLS -->
+	     <!-- As is the Senate Intelligence Committee -->
+	     <exclusion pattern="^http://(?:www.)?rules\.senate\.gov/" />
+	     <exclusion pattern="^http://(?:www.)?intelligence\.senate\.gov/" />
+
+	<securecookie host="^www\.\w+\.senate\.gov$" name=".*" />
+
+
+	<rule from="^http://((?:sopr|www)\.)?senate\.gov/"
+		to="https://$1senate.gov/" />
+
+	<!--	- Unique subdomains for each Senator
+		- !www doesn't work over https
+		- !www redirects to www over http
+
+		NB: All other subdomains must be covered above or excluded.
+				-->
+	<rule from="^http://(?:www\.)?(?!senate\.g)(\w+)\.senate\.gov/"
+		to="https://www.$1.senate.gov/" />
+
+</ruleset>
+

@@ -1,0 +1,37 @@
+<!--
+	Other Xiph rulesets:
+
+		- Are_Wecompressed_Yet.com.xml
+
+
+	Nonfunctional subdomains:
+
+		- downloads *
+		- lists *
+
+	* Refused
+
+
+	Fully covered subdomains:
+
+		- (www.)
+		- git
+		- media
+		- people
+		- svn
+		- trac
+		- wiki
+
+-->
+<ruleset name="Xiph.org">
+
+	<target host="xiph.org" />
+	<target host="*.xiph.org" />
+
+
+	<securecookie host="^.*\.xiph\.org$" name=".*" />
+
+
+	<rule from="^http://((?:git|media|people|svn|wiki|trac|www)\.)?xiph\.org/"
+		to="https://$1xiph.org/" />
+</ruleset>

@@ -1,0 +1,36 @@
+<!--
+	CDN buckets:
+
+		- coinbase-uploads.s3.amazonaws.com
+
+
+	Nonfunctional subdomains:
+
+		- blog *
+
+	* Tumblr
+
+
+	Problematic subdomains:
+
+		- status *
+
+	* StatusPage.io
+
+-->
+<ruleset name="Coinbase (partial)">
+
+	<target host="coinbase.com" />
+	<target host="*.coinbase.com" />
+
+
+	<securecookie host="^\.?coinbase\.com$" name=".+" />
+
+
+	<rule from="^http://(translate\.|www\.)?coinbase\.com/"
+		to="https://$1coinbase.com/" />
+
+	<rule from="^http://status\.coinbase\.com/"
+		to="https://coinbase.statuspage.io/" />
+
+</ruleset>

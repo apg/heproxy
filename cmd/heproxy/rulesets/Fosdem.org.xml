@@ -1,0 +1,10 @@
+<ruleset name="FOSDEM.org">
+
+	<target host="fosdem.org" />
+	<target host="*.fosdem.org" />
+
+
+	<rule from="^http://((?:archive|video|www)\.)?fosdem\.org/"
+		to="https://$1fosdem.org/" />
+
+</ruleset>

@@ -1,0 +1,61 @@
+<!--
+	For other Attachmate Group coverage, see Attachmate-Group.xml.
+
+
+	CDN buckets:
+
+		- d3szt4pm3e6jod.cloudfront.net
+		- suse-studio-users.1598176.n2.nabble.com
+
+
+	Nonfunctional domains:
+
+		- users.suse.com ¹
+		- blog.susestudio.com ²
+
+	¹ Refused
+	² Google
+
+
+	Problematic domains:
+
+		- www.expandedsupport.com ¹
+		- suse.com ²
+
+	¹ Cert only matches ^expandedsupport.com
+	² Dropped
+
+
+	Insecure cookies are set for these domains:
+
+		- .suse.com
+
+-->
+<ruleset name="SUSE (partial)">
+
+	<target host="expandedsupport.com" />
+	<target host="www.expandedsupport.com" />
+	<target host="suse.com" />
+	<target host="*.suse.com" />
+	<target host="susestudio.com" />
+	<target host="*.susestudio.com" />
+
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^\.suse\.com$" name="^(ZNPCQ003-\d+|lb_suse)$" /-->
+
+	<securecookie host="^expandedsupport\.com$" name=".+" />
+	<securecookie host="^\.?suse(?:studio)?\.com$" name=".+" />
+
+
+	<rule from="^http://(?:www\.)?expandedsupport\.com/"
+		to="https://expandedsupport.com/" />
+
+	<rule from="^http://(?:www\.)?suse\.com/"
+		to="https://www.suse.com/" />
+
+	<rule from="^http://(www\.)?susestudio\.com/"
+		to="https://$1susestudio.com/" />
+
+</ruleset>
