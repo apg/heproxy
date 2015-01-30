@@ -22,14 +22,15 @@ type Target struct {
 
 // Exclusion represents a URL pattern which should not be rewritten.
 type Exclusion struct {
-	Pattern   string `xml:"pattern,attr"`
+	Pattern string
+
 	patternRE pcre.Regexp
 }
 
 // Rule represents a rewritten URL.
 type Rule struct {
-	From string `xml:"from,attr"`
-	To   string `xml:"to,attr"`
+	From string
+	To   string
 
 	fromRE pcre.Regexp
 }
@@ -48,9 +49,6 @@ func NewRuleSet(r io.Reader) (*RuleSet, error) {
 	ruleset := &RuleSet{}
 
 	err := decoder.Decode(ruleset)
-	if err == nil {
-		err = ruleset.compile()
-	}
 	return ruleset, err
 }
 
@@ -82,45 +80,42 @@ func (r *RuleSet) Rewrite(url *url.URL) *url.URL {
 	return url
 }
 
-func (r *RuleSet) compile() error {
+// UnmarshalXML unmarshals and compiles a regular expression pulled out of the XML.
+func (r *Rule) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	var err error
-
-	for _, t := range r.Targets {
-		err = t.compile()
-		if err != nil {
-			return err
+	var dummy interface{}           // consume the rest of the element.
+	d.DecodeElement(&dummy, &start) // not sure about this.
+	for _, attr := range start.Attr {
+		switch attr.Name.Local {
+		case "from":
+			r.From = attr.Value
+			r.fromRE, err = compile(r.From)
+			if err != nil {
+				return err
+			}
+		case "to":
+			r.To = attr.Value
 		}
 	}
 
-	for _, t := range r.Exclusions {
-		err = t.compile()
-		if err != nil {
-			return err
-		}
-	}
-
-	for _, t := range r.Rules {
-		err = t.compile()
-		if err != nil {
-			return err
-		}
-	}
-
-	return nil
+	return err
 }
 
-func (t *Target) compile() error {
-	return nil
-}
-
-func (e *Exclusion) compile() error {
+// UnmarshalXML unmarshals and compiles a regular expression pulled out of the XML.
+func (e *Exclusion) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 	var err error
-
-	if e.Pattern != "" {
-		e.patternRE, err = compile(e.Pattern)
-	} else {
-		err = ErrEmptyPattern
+	var dummy interface{}           // consume the rest of the element.
+	d.DecodeElement(&dummy, &start) // not sure about this.
+	for _, attr := range start.Attr {
+		if attr.Name.Local == "pattern" {
+			e.Pattern = attr.Value
+			e.patternRE, err = compile(e.Pattern)
+			if err != nil {
+				return err
+			}
+		}
 	}
+
 	return err
 }
 
@@ -148,20 +143,10 @@ func (r *Rule) Apply(old *url.URL) (new *url.URL, found bool) {
 	return old, false
 }
 
-func (r *Rule) compile() error {
-	var err error
-	if r.From != "" {
-		r.fromRE, err = compile(r.From)
-	} else {
-		err = ErrEmptyPattern
-	}
-	return err
-}
-
 func compile(pat string) (pcre.Regexp, error) {
 	re, cErr := pcre.Compile(massagePattern(pat), 0)
 	if cErr != nil {
-		return re, errors.New(cErr.String())
+		return re, fmt.Errorf(cErr.String())
 	}
 	return re, nil
 }
