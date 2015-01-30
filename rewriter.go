@@ -20,7 +20,7 @@ func (r *Rewriter) Rewrite(u *url.URL) *url.URL {
 
 	// Find a possible ruleset that matches this URL.
 	for _, r := range r.rulesets {
-		if r.Matches(u) {
+		if r.Includes(u) {
 			return r.Rewrite(u)
 		}
 	}

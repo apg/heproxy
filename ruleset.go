@@ -52,17 +52,22 @@ func NewRuleSet(r io.Reader) (*RuleSet, error) {
 	return ruleset, err
 }
 
-// Matches tests to see if url is covered by this RuleSet
-func (r *RuleSet) Matches(url *url.URL) bool {
-	for _, t := range r.Targets {
-		// FIXME: refactor into a Target.Matches(), to take into consideration more things.
-		if t.Host == url.Host { // FIXME: url.Host might have a port, too
-			// unless it's excluded...
-			for _, e := range r.Exclusions {
-				if e.patternRE.MatcherString(url.String(), 0).Matches() {
-					return false
-				}
+// Includes tests to see if url is included by this RuleSet
+func (r *RuleSet) Includes(u *url.URL) bool {
+	if !r.Excludes(u) {
+		for _, t := range r.Targets {
+			if t.matches(u) {
+				return true
 			}
+		}
+	}
+	return false
+}
+
+// Excludes tests to see if url is excluded by this Ruleset
+func (r *RuleSet) Excludes(url *url.URL) bool {
+	for _, e := range r.Exclusions {
+		if e.matches(url) {
 			return true
 		}
 	}
@@ -143,6 +148,18 @@ func (r *Rule) Apply(old *url.URL) (new *url.URL, found bool) {
 	return old, false
 }
 
+func (e *Exclusion) matches(u *url.URL) bool {
+	if e.patternRE.MatcherString(u.String(), 0).Matches() {
+		return true
+	}
+	return false
+}
+
+func (t *Target) matches(u *url.URL) bool {
+	// FIXME: this doesn't do ports or anything like that.
+	return u.Host == t.Host
+}
+
 func compile(pat string) (pcre.Regexp, error) {
 	re, cErr := pcre.Compile(massagePattern(pat), 0)
 	if cErr != nil {
@@ -151,7 +168,7 @@ func compile(pat string) (pcre.Regexp, error) {
 	return re, nil
 }
 
-// may not be necessary
+// may not be necessary, but for now...
 func massagePattern(pat string) string {
 	return pat
 }
