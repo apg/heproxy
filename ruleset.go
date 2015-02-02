@@ -7,6 +7,8 @@ import (
 	"io"
 	"log"
 	"net/url"
+	"os"
+	"path"
 	"strings"
 
 	"github.com/glenn-brown/golang-pkg-pcre/src/pkg/pcre"
@@ -50,6 +52,37 @@ func NewRuleSet(r io.Reader) (*RuleSet, error) {
 
 	err := decoder.Decode(ruleset)
 	return ruleset, err
+}
+
+// ReadRuleSets iterates through a directory and returns a slice of rulesets.
+func ReadRuleSets(baseDir string) []*RuleSet {
+	var ruleSets []*RuleSet
+
+	dir, err := os.Open(baseDir)
+	if err != nil {
+		panic(err)
+	}
+	defer dir.Close()
+
+	dirnames, err := dir.Readdirnames(0)
+	if err != nil {
+		panic(err)
+	}
+
+	for _, fn := range dirnames {
+		f, _ := os.Open(path.Join(baseDir, fn))
+		rs, err := NewRuleSet(f)
+		if err != nil {
+			log.Printf("err=%q ruleset=%q", err, f)
+			f.Close()
+			continue
+		} else {
+			ruleSets = append(ruleSets, rs)
+		}
+		f.Close()
+	}
+
+	return ruleSets
 }
 
 // Includes tests to see if url is included by this RuleSet
@@ -157,7 +190,39 @@ func (e *Exclusion) matches(u *url.URL) bool {
 
 func (t *Target) matches(u *url.URL) bool {
 	// FIXME: this doesn't do ports or anything like that.
-	return u.Host == t.Host
+	hostname := strings.Split(u.Host, ":")[0]
+	uBits := strings.Split(hostname, ".")
+	tBits := strings.Split(t.Host, ".")
+
+	return match(uBits, tBits)
+}
+
+func match(a, b []string) bool {
+	// FIXME: Needs to be better tested.
+	if len(a) == 0 && len(b) == 0 {
+		return true
+	} else if len(a) == 0 || len(b) == 0 {
+		return false // out of things to test.
+	} else if b[0] == a[0] { // keep going.
+		return match(a[1:], b[1:])
+	} else if b[0] == "*" {
+		if len(b) == 1 && len(a) > 0 {
+			return true
+		} else if len(b) > 1 {
+			for ai := 0; ai < len(a); ai++ {
+				if b[1] == a[ai] {
+					return match(b[2:], a[ai+1:])
+				}
+			}
+			return false
+		} else {
+			return match(a[1:], b[1:])
+		}
+	} else if b[0] == a[0] {
+		return match(a[1:], b[1:])
+	}
+
+	return false
 }
 
 func compile(pat string) (pcre.Regexp, error) {

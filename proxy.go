@@ -7,7 +7,7 @@ import (
 )
 
 // NewHEProxy returns a new proxy which maps a request to an HTTPS url if available
-func NewHEProxy(rw *Rewriter) *httputil.ReverseProxy {
+func NewHEProxy(rw Rewriter) *httputil.ReverseProxy {
 	director := func(req *http.Request) {
 		oldURL := req.URL
 		newURL := rw.Rewrite(oldURL)

@@ -2,7 +2,6 @@ package heproxy
 
 import (
 	"bytes"
-	"log"
 	"net/url"
 	"testing"
 )
@@ -38,6 +37,4 @@ func TestRuleApply(t *testing.T) {
 	if newURL.String() == oldURL.String() {
 		t.Errorf("Exepected (%q) to be rewritten. Got: %q", oldURL.String(), newURL.String())
 	}
-
-	log.Println(newURL)
 }
