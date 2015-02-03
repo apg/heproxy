@@ -36,7 +36,7 @@ the `http_proxy` environment variable.
 
 ## Contributing and Feedback
 
-It's possible that keyfavors.sh has bugs, and/or does something it
+It's possible that heproxy has bugs, and/or does something it
 shouldn't be, and/or has lots of room for improvement. If you'd like
 to fix or contribute something, please fork and submit a pull request,
 or open an issue.
