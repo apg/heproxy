@@ -50,7 +50,7 @@ Andrew Gwozdziewycz <web@apgwoz.com>
 
 ## Copyleft
 
-Copyright 2014, Andrew Gwozdziewycz, web@apgwoz.com
+Copyright 2015, Andrew Gwozdziewycz, web@apgwoz.com
 Licensed under the GNU AGPLv3. See LICENSE for more details.
 
 The rulesets are Copyright HTTPS Everywhere Authors under the GPLv2.
